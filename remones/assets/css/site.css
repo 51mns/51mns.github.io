@@ -755,3 +755,12 @@ h3 { font-size: 1.125rem; font-weight: 650; margin-bottom: var(--space-s); }
   .js .flow:not(.is-in) > li::before { background: var(--action); color: var(--on-action); }
   .dl-bar, .btn { transition: none; }
 }
+
+/* compact secondary features */
+.more-features { border-top: 1px solid var(--hairline); padding: 40px 0 8px; }
+.more-title { font-size: 0.8125rem; font-weight: 650; letter-spacing: 0.06em; color: var(--text-secondary); margin-bottom: var(--space-l); }
+.more-item { display: flex; gap: var(--space-l); align-items: flex-start; max-width: 40rem; padding: var(--space-l) var(--space-xl); }
+.more-item .glyph { flex: none; width: 44px; height: 44px; border-radius: var(--radius-control); background: var(--fill); display: grid; place-items: center; }
+.more-item .glyph svg { width: 24px; height: 24px; }
+.more-item h3 { font-size: 1.0625rem; margin-bottom: var(--space-xs); }
+.more-item p { color: var(--text-secondary); margin: 0; }

@@ -71,9 +71,9 @@ def home() -> dict:
 <div class="value-text">
 <span class="kicker">Away from home</span>
 <h2 id="v3-title" class="display">Away from home. No port forwarding.</h2>
-<p class="lead">Same Wi-Fi at home, Tailscale when you’re out. Remones picks a route that works from the addresses your iPhone has learned.</p>
+<p class="lead">Same Wi-Fi at home, Tailscale when you’re out. Your iPhone remembers the routes to a Mac it has connected to and tries one that’s available.</p>
 <ul class="ticks">
-<li>No router port forwarding.</li>
+<li>With a VPN such as Tailscale, there’s no need for router port forwarding.</li>
 <li>No Remones server, no account. Your screen never passes through our servers.</li>
 </ul>
 <p><a href="~/tailscale/">Using Remones with Tailscale</a></p>
@@ -85,20 +85,24 @@ def home() -> dict:
 
 <section class="value" aria-labelledby="v4-title">
 <div class="value-text">
-<span class="kicker">Input and Audio</span>
+<span class="kicker">Input</span>
 <h2 id="v4-title" class="display">Fingers or keyboard.</h2>
 <p class="lead">Move the pointer like a trackpad, or touch the screen directly. Choose the input mode that suits what you’re doing.</p>
 <ul class="ticks">
-<li>Type with the iPhone keyboard — Japanese input included.</li>
+<li>Type with the iPhone keyboard. Japanese input is supported.</li>
 <li>Paste text you copied on your iPhone into the Mac.</li>
 <li>Haptic feedback as you control the Mac.</li>
-<li>Hear your Mac on your iPhone (Audio), with Picture in Picture.</li>
 </ul>
 </div>
 <div class="stage" data-demo="input">
 {demos.input_demo("en")}
 </div>
 </section>
+
+<aside class="more-features" aria-labelledby="more-title">
+<h2 id="more-title" class="more-title">More features</h2>
+<div class="card more-item"><div class="glyph">{c.icon("pip")}</div><div><h3>Audio and Picture in Picture</h3><p>Play your Mac’s sound on your iPhone. Keep an eye on your Mac in a small window while you use other apps (the small window is view-only).</p></div></div>
+</aside>
 
 </div>
 </div>
