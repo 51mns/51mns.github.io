@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>はじめかた — Remones</title>
+<meta name="description" content="Remones を使いはじめる手順。Mac アプリのインストール、権限の許可、Mac の追加（近くのMac・アドレス入力・Tailscale）、Mac での承認まで。">
+<link rel="canonical" href="https://51mns.github.io/remones/setup/">
+<link rel="alternate" hreflang="ja" href="https://51mns.github.io/remones/setup/">
+<link rel="alternate" hreflang="en" href="https://51mns.github.io/remones/en/setup/">
+<link rel="alternate" hreflang="x-default" href="https://51mns.github.io/remones/setup/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Remones">
+<meta property="og:title" content="はじめかた — Remones">
+<meta property="og:description" content="Remones を使いはじめる手順。Mac アプリのインストール、権限の許可、Mac の追加（近くのMac・アドレス入力・Tailscale）、Mac での承認まで。">
+<meta property="og:url" content="https://51mns.github.io/remones/setup/">
+<meta property="og:image" content="https://51mns.github.io/remones/assets/img/og-ja.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Remones">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="../"><svg viewBox="200 210 640 640" aria-hidden="true" focusable="false"><path class="mark-base" fill-rule="evenodd" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L806.46 221.31 A18.43 18.43 0 0 1 824.89 239.75 L824.89 553.09 A61.44 61.44 0 0 1 763.45 614.53 L705.75 614.53 A12.29 12.29 0 0 0 697.06 635.51 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z M314.94 349.11 A33.79 33.79 0 0 1 348.73 315.32 L686.65 315.32 A33.79 33.79 0 0 1 720.44 349.11 L720.44 486.74 A33.79 33.79 0 0 1 686.65 520.53 L348.73 520.53 A33.79 33.79 0 0 1 314.94 486.74 Z"/><path class="mark-cursor" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L807.19 221.31 A17.69 17.69 0 0 1 824.89 239.01 L824.89 255.12 A7.37 7.37 0 0 1 822.73 260.34 L720.44 362.63 L720.44 338.03 A22.71 22.71 0 0 0 697.73 315.32 L348.73 315.32 A33.79 33.79 0 0 0 314.94 349.11 L314.94 486.74 A33.79 33.79 0 0 0 348.73 520.53 L579.03 520.53 A7.37 7.37 0 0 1 584.24 522.69 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z"/></svg><span>Remones</span></a>
+<nav class="site-nav" aria-label="メインメニュー"><ul><li><a href="../#features">機能</a></li><li><a href="../setup/" aria-current="page">はじめかた</a></li><li><a href="../download/">ダウンロード</a></li><li><a href="../support/">サポート</a></li></ul></nav>
+<a class="lang-switch" href="../en/setup/" hreflang="en" lang="en" aria-label="English version">English</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap page-head">
+<p class="breadcrumb"><a href="../">ホーム</a> / はじめかた</p>
+<h1>はじめかた</h1>
+<p class="lead">はじめて Remones を使うときの手順です。iPhone・iPad と Mac を手もとに用意して、同じ Wi-Fi につないでおくとスムーズです。</p>
+</div>
+<div class="wrap doc">
+<nav class="toc" aria-label="手順"><p class="toc-title">手順</p><ol>
+<li><a href="#step-mac">1. Mac アプリを入れる</a></li>
+<li><a href="#step-permissions">2. 権限を許可する</a></li>
+<li><a href="#step-add">3. Mac を追加する</a></li>
+<li><a href="#step-approve">4. Mac で承認する</a></li>
+<li><a href="#step-open">5. 開く</a></li>
+</ol></nav>
+<div class="doc-main">
+
+<section id="step-mac" aria-labelledby="step-mac-title">
+<h2 id="step-mac-title">1. Mac アプリを入れる</h2>
+<p>操作したい Mac で、このページのアドレスを開いてください。</p>
+<p><code>51mns.github.io/remones/mac/</code></p>
+<p>Mac アプリ「Remones Host」をダウンロードして、「アプリケーション」フォルダに入れ、開きます。詳しくは <a href="../mac/#install">Mac アプリのインストール</a>をご覧ください。</p>
+</section>
+
+<section id="step-permissions" aria-labelledby="step-permissions-title">
+<h2 id="step-permissions-title">2. 権限を許可する</h2>
+<p>Mac の「システム設定」→「プライバシーとセキュリティ」で、Remones Host に次の 2 つを許可します。</p>
+<ul>
+<li><strong>画面収録とシステムオーディオ録音</strong> — Mac の画面を iPhone に映すために必要です。</li>
+<li><strong>アクセシビリティ</strong> — iPhone から Mac を操作するために必要です。画面を見るだけなら、なくても使えます。</li>
+</ul>
+<p>許可したら、Remones Host をいったん終了して開き直します。</p>
+</section>
+
+<section id="step-add" aria-labelledby="step-add-title">
+<h2 id="step-add-title">3. Mac を追加する</h2>
+<p>iPhone・iPad で Remones を開き、Home の「＋」をタップします。Mac の追加方法は 3 つあります。</p>
+<div class="grid grid-3" style="margin-bottom:16px">
+<div class="card"><h3>近くのMac</h3><p>同じネットワークにある Mac が自動で表示されます。選ぶだけです。</p></div>
+<div class="card"><h3>アドレスを入力</h3><p>Mac の IP アドレスかホスト名を入力します。ポートは空欄のままで通常は問題ありません（既定は 7777）。</p></div>
+<div class="card"><h3>Tailscale</h3><p>Mac の Tailscale 上の名前か、100. で始まるアドレスを入力します。<a href="../tailscale/">詳しく</a></p></div>
+</div>
+<div class="note"><p>はじめて Mac を探すとき、iPhone に「ローカルネットワーク上のデバイスの検索」についての確認が表示されます。「許可」を選んでください。あとから変えるときは、iPhone の「設定」→「プライバシーとセキュリティ」→「ローカルネットワーク」で Remones をオンにします。</p></div>
+</section>
+
+<section id="step-approve" aria-labelledby="step-approve-title">
+<h2 id="step-approve-title">4. Mac で承認する</h2>
+<p>iPhone にペアリングコードが表示されます。Mac にも確認が表示されるので、同じコードであることを確かめてから承認します。</p>
+<ul>
+<li><span class="ui-term">Always Allow</span> — この iPhone を登録し、次回から承認なしで接続します。</li>
+<li><span class="ui-term">Approve Once</span> — 今回だけ許可します。</li>
+<li><span class="ui-term">Reject</span> — 拒否します。心当たりがない場合はこちらを選んでください。</li>
+</ul>
+</section>
+
+<section id="step-open" aria-labelledby="step-open-title">
+<h2 id="step-open-title">5. 開く</h2>
+<p>Home に Mac が「オンライン」と表示されたら、「開く」をタップします。これで準備は完了です。</p>
+<h3>使いはじめのヒント</h3>
+<ul>
+<li>セッション中のメニューから <span class="ui-term">Display</span>（表示）、<span class="ui-term">Input</span>（入力）、<span class="ui-term">Audio</span>（音声）を切り替えられます。</li>
+<li>シェルフを開くと、ほかのウインドウ、アプリ、Mac にすぐ移れます。</li>
+<li><span class="ui-term">Home</span> に戻っても、Mac との接続は保たれます。</li>
+<li>iPhone でコピーしたテキストは、<span class="ui-term">Input</span> の「ペースト」で Mac に送れます。</li>
+</ul>
+<p>うまくいかないときは <a href="../mac/#troubleshooting">うまくいかないとき</a>、または <a href="../support/">サポート</a>をご覧ください。</p>
+</section>
+
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-grid">
+<div class="footer-brand"><a class="brand" href="../"><svg viewBox="200 210 640 640" aria-hidden="true" focusable="false"><path class="mark-base" fill-rule="evenodd" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L806.46 221.31 A18.43 18.43 0 0 1 824.89 239.75 L824.89 553.09 A61.44 61.44 0 0 1 763.45 614.53 L705.75 614.53 A12.29 12.29 0 0 0 697.06 635.51 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z M314.94 349.11 A33.79 33.79 0 0 1 348.73 315.32 L686.65 315.32 A33.79 33.79 0 0 1 720.44 349.11 L720.44 486.74 A33.79 33.79 0 0 1 686.65 520.53 L348.73 520.53 A33.79 33.79 0 0 1 314.94 486.74 Z"/><path class="mark-cursor" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L807.19 221.31 A17.69 17.69 0 0 1 824.89 239.01 L824.89 255.12 A7.37 7.37 0 0 1 822.73 260.34 L720.44 362.63 L720.44 338.03 A22.71 22.71 0 0 0 697.73 315.32 L348.73 315.32 A33.79 33.79 0 0 0 314.94 349.11 L314.94 486.74 A33.79 33.79 0 0 0 348.73 520.53 L579.03 520.53 A7.37 7.37 0 0 1 584.24 522.69 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z"/></svg><span>Remones</span></a><p>iPhone・iPad から、自分の Mac を。</p></div>
+<div><h2>製品</h2><ul><li><a href="../#features">機能</a></li><li><a href="../#screens">画面</a></li><li><a href="../#plus">Remones Plus</a></li><li><a href="../download/">ダウンロード</a></li></ul></div><div><h2>ガイド</h2><ul><li><a href="../setup/">はじめかた</a></li><li><a href="../mac/">Mac アプリ</a></li><li><a href="../tailscale/">外出先から使う</a></li><li><a href="../support/">サポート</a></li></ul></div><div><h2>規約</h2><ul><li><a href="../privacy/">プライバシーポリシー</a></li><li><a href="../terms/">利用条件</a></li></ul></div>
+</div>
+<p class="copyright">© 2026 Remones. Apple、Mac、iPhone、iPad、macOS は Apple Inc. の商標です。Tailscale は Tailscale Inc. の商標です。</p>
+</div>
+</footer>
+</body>
+</html>

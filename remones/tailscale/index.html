@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>外出先から使う（Tailscale） — Remones</title>
+<meta name="description" content="Tailscale を使って、自宅の外から iPhone・iPad の Remones で Mac に接続する方法。設定の手順、MagicDNS 名での手動追加、安全に使うための注意。">
+<link rel="canonical" href="https://51mns.github.io/remones/tailscale/">
+<link rel="alternate" hreflang="ja" href="https://51mns.github.io/remones/tailscale/">
+<link rel="alternate" hreflang="en" href="https://51mns.github.io/remones/en/tailscale/">
+<link rel="alternate" hreflang="x-default" href="https://51mns.github.io/remones/tailscale/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121316" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/css/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Remones">
+<meta property="og:title" content="外出先から使う（Tailscale） — Remones">
+<meta property="og:description" content="Tailscale を使って、自宅の外から iPhone・iPad の Remones で Mac に接続する方法。設定の手順、MagicDNS 名での手動追加、安全に使うための注意。">
+<meta property="og:url" content="https://51mns.github.io/remones/tailscale/">
+<meta property="og:image" content="https://51mns.github.io/remones/assets/img/og-ja.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Remones">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+<div class="wrap">
+<a class="brand" href="../"><svg viewBox="200 210 640 640" aria-hidden="true" focusable="false"><path class="mark-base" fill-rule="evenodd" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L806.46 221.31 A18.43 18.43 0 0 1 824.89 239.75 L824.89 553.09 A61.44 61.44 0 0 1 763.45 614.53 L705.75 614.53 A12.29 12.29 0 0 0 697.06 635.51 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z M314.94 349.11 A33.79 33.79 0 0 1 348.73 315.32 L686.65 315.32 A33.79 33.79 0 0 1 720.44 349.11 L720.44 486.74 A33.79 33.79 0 0 1 686.65 520.53 L348.73 520.53 A33.79 33.79 0 0 1 314.94 486.74 Z"/><path class="mark-cursor" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L807.19 221.31 A17.69 17.69 0 0 1 824.89 239.01 L824.89 255.12 A7.37 7.37 0 0 1 822.73 260.34 L720.44 362.63 L720.44 338.03 A22.71 22.71 0 0 0 697.73 315.32 L348.73 315.32 A33.79 33.79 0 0 0 314.94 349.11 L314.94 486.74 A33.79 33.79 0 0 0 348.73 520.53 L579.03 520.53 A7.37 7.37 0 0 1 584.24 522.69 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z"/></svg><span>Remones</span></a>
+<nav class="site-nav" aria-label="メインメニュー"><ul><li><a href="../#features">機能</a></li><li><a href="../setup/" aria-current="page">はじめかた</a></li><li><a href="../download/">ダウンロード</a></li><li><a href="../support/">サポート</a></li></ul></nav>
+<a class="lang-switch" href="../en/tailscale/" hreflang="en" lang="en" aria-label="English version">English</a>
+</div>
+</header>
+<main id="main">
+<div class="wrap page-head">
+<p class="breadcrumb"><a href="../">ホーム</a> / 外出先から使う</p>
+<h1>外出先から使う（Tailscale）</h1>
+<p class="lead">Remones は、iPhone と Mac が直接つながるアプリです。自宅の外から使うときは、iPhone と Mac を同じ VPN に参加させます。ここでは Tailscale を使う方法を説明します。</p>
+</div>
+<div class="wrap doc">
+<nav class="toc" aria-label="このページの内容"><p class="toc-title">このページの内容</p><ol>
+<li><a href="#how">しくみ</a></li>
+<li><a href="#steps">設定の手順</a></li>
+<li><a href="#manual">手動で追加する</a></li>
+<li><a href="#safety">安全に使うために</a></li>
+</ol></nav>
+<div class="doc-main">
+
+<section id="how" aria-labelledby="how-title">
+<h2 id="how-title">しくみ</h2>
+<p>Tailscale は、自分の端末どうしをつなぐ VPN サービスです。iPhone と Mac を同じ Tailscale のネットワーク（tailnet）に参加させると、離れた場所からでも Mac に届くようになります。</p>
+<p>Remones は、近くにいるときは同じネットワーク（LAN）の経路を、届かないときは Tailscale の経路を使って接続します。Remones のサーバーを経由することはありません。Tailscale の利用は任意で、ほかの VPN でも使えます。</p>
+</section>
+
+<section id="steps" aria-labelledby="steps-title">
+<h2 id="steps-title">設定の手順</h2>
+<ol class="steps">
+<li><h3>Tailscale を両方に入れる</h3><p>iPhone（または iPad）と Mac の両方に Tailscale をインストールします。<a href="https://tailscale.com/download" rel="noopener">Tailscale のダウンロード</a></p></li>
+<li><h3>同じアカウントでサインイン</h3><p>両方の端末で同じ Tailscale アカウントにサインインし、同じ tailnet に参加させます。両方で Tailscale がオンになっていることを確認してください。</p></li>
+<li><h3>一度、同じ Wi-Fi で接続する</h3><p>Mac で Tailscale がオンの状態で、同じ Wi-Fi にいるときに Remones で一度 Mac に接続します。このとき iPhone は、Mac の Tailscale 上のアドレスを覚えます。</p></li>
+<li><h3>外出先で開く</h3><p>外出先では iPhone の Tailscale をオンにして、Remones の Home からいつもどおり Mac を開きます。</p></li>
+</ol>
+<p>Tailscale の使い方は <a href="https://tailscale.com/docs/features/magicdns" rel="noopener">Tailscale のドキュメント</a>もご覧ください。</p>
+</section>
+
+<section id="manual" aria-labelledby="manual-title">
+<h2 id="manual-title">手動で追加する</h2>
+<p>同じ Wi-Fi で接続できない場合は、Tailscale のアドレスを直接入力して追加できます。Home の「＋」から、アドレス欄に次のどちらかを入力します。</p>
+<ul>
+<li>Mac の Tailscale 上の名前（MagicDNS 名）。短い名前でも、完全な名前でも入力できます。</li>
+<li><code>100.</code> で始まる Mac の Tailscale アドレス。</li>
+</ul>
+<p>Mac の名前とアドレスは、Mac の Tailscale アプリで確認できます。MagicDNS については <a href="https://tailscale.com/docs/features/magicdns" rel="noopener">Tailscale の MagicDNS の説明</a>をご覧ください。はじめて接続するときは、Mac での承認が必要です。</p>
+</section>
+
+<section id="safety" aria-labelledby="safety-title">
+<h2 id="safety-title">安全に使うために</h2>
+<div class="warn"><p>Mac のポート（既定は 7777）を、ルーターのポート開放などでインターネットに直接公開しないでください。外から使うときは、Tailscale などの VPN を使ってください。</p></div>
+<p>通信は TLS で暗号化され、ペアリング済みの端末だけが接続できます。接続できる端末は、Mac の Remones Host で確認・削除できます。</p>
+</section>
+
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-grid">
+<div class="footer-brand"><a class="brand" href="../"><svg viewBox="200 210 640 640" aria-hidden="true" focusable="false"><path class="mark-base" fill-rule="evenodd" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L806.46 221.31 A18.43 18.43 0 0 1 824.89 239.75 L824.89 553.09 A61.44 61.44 0 0 1 763.45 614.53 L705.75 614.53 A12.29 12.29 0 0 0 697.06 635.51 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z M314.94 349.11 A33.79 33.79 0 0 1 348.73 315.32 L686.65 315.32 A33.79 33.79 0 0 1 720.44 349.11 L720.44 486.74 A33.79 33.79 0 0 1 686.65 520.53 L348.73 520.53 A33.79 33.79 0 0 1 314.94 486.74 Z"/><path class="mark-cursor" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L807.19 221.31 A17.69 17.69 0 0 1 824.89 239.01 L824.89 255.12 A7.37 7.37 0 0 1 822.73 260.34 L720.44 362.63 L720.44 338.03 A22.71 22.71 0 0 0 697.73 315.32 L348.73 315.32 A33.79 33.79 0 0 0 314.94 349.11 L314.94 486.74 A33.79 33.79 0 0 0 348.73 520.53 L579.03 520.53 A7.37 7.37 0 0 1 584.24 522.69 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z"/></svg><span>Remones</span></a><p>iPhone・iPad から、自分の Mac を。</p></div>
+<div><h2>製品</h2><ul><li><a href="../#features">機能</a></li><li><a href="../#screens">画面</a></li><li><a href="../#plus">Remones Plus</a></li><li><a href="../download/">ダウンロード</a></li></ul></div><div><h2>ガイド</h2><ul><li><a href="../setup/">はじめかた</a></li><li><a href="../mac/">Mac アプリ</a></li><li><a href="../tailscale/">外出先から使う</a></li><li><a href="../support/">サポート</a></li></ul></div><div><h2>規約</h2><ul><li><a href="../privacy/">プライバシーポリシー</a></li><li><a href="../terms/">利用条件</a></li></ul></div>
+</div>
+<p class="copyright">© 2026 Remones. Apple、Mac、iPhone、iPad、macOS は Apple Inc. の商標です。Tailscale は Tailscale Inc. の商標です。</p>
+</div>
+</footer>
+</body>
+</html>
