@@ -41,17 +41,17 @@ def home() -> dict:
 
 <section class="value" aria-labelledby="v1-title">
 <div class="value-text">
-<span class="kicker">ウインドウ表示</span>
+<span class="kicker">Window</span>
 <h2 id="v1-title" class="display">ピンチしなくても、<wbr>読める。</h2>
 <p class="lead">Mac の大きな画面を小さく映すと、文字は読めません。Remones は Mac のアプリをひとつ選ぶと、そのウインドウを iPhone や iPad の画面サイズに合わせて表示します。</p>
 <ul class="ticks">
 <li>文字の大きさも調整できます。</li>
-<li>デスクトップ全体を見たいときは Desktop に切り替え。</li>
+<li>Mac の画面全体を見たいときは Display に切り替え。</li>
 </ul>
 </div>
-<div class="stage" data-demo="window">
+<div class="stage" data-scrub>
 {demos.window_demo("ja")}
-<div class="stage-caption" aria-hidden="true"><span class="chip">Desktop</span><span class="chip">ウインドウ表示</span></div>
+<div class="stage-caption" aria-hidden="true"><span class="chip s-anim">Display</span><span class="chip s-anim">Window</span></div>
 </div>
 </section>
 
@@ -66,7 +66,7 @@ def home() -> dict:
 <li>シェルフから、ほかのウインドウや Mac へすぐ移れます。</li>
 </ul>
 </div>
-<div class="stage" data-demo="macs">
+<div class="stage" data-scrub>
 {demos.macs_demo("ja")}
 </div>
 </section>
@@ -82,7 +82,7 @@ def home() -> dict:
 </ul>
 <p><a href="~/tailscale/">Tailscale での使い方</a></p>
 </div>
-<div class="stage" data-demo="remote">
+<div class="stage" data-scrub>
 {demos.remote_demo("ja")}
 </div>
 </section>
@@ -91,7 +91,7 @@ def home() -> dict:
 <div class="value-text">
 <span class="kicker">Input</span>
 <h2 id="v4-title" class="display">指でも、<wbr>キーボードでも。</h2>
-<p class="lead">トラックパッドのように動かすか、画面を直接タッチするか。使い方に合わせて入力モードを選べます。</p>
+<p class="lead">画面に直接触れる「タッチ」、指でカーソルを動かす「トラックパッド」、その両方を使い分ける「Hybrid」。使い方に合わせて入力モードを選べます。</p>
 <ul class="ticks">
 <li>iPhone のキーボードで入力。日本語入力にも対応。</li>
 <li>iPhone でコピーしたテキストを Mac にペースト。</li>
@@ -110,6 +110,17 @@ def home() -> dict:
 
 </div>
 </div>
+
+<section class="section playground" id="try" aria-labelledby="try-title">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">試してみる</span>
+<h2 id="try-title" class="display">さわって、<wbr>確かめる。</h2>
+<p class="lead">表示と入力モードを切り替えて、iPhone の画面を指やマウスで操作してみてください。Dock のアプリをクリックすると、ウインドウが開きます。</p>
+</div>
+{demos.playground("ja")}
+</div>
+</section>
 
 <section class="section" id="how" aria-labelledby="how-title">
 <div class="wrap">
@@ -168,6 +179,7 @@ def home() -> dict:
         "slug": "",
         "nav": "home",
         "dl_bar": True,
+        "scripts": ["assets/js/playground.js"],
         "title": "Remones — iPhone が、あなたの Mac になる。",
         "title_is_full": True,
         "description": "Remones は iPhone・iPad から自分の Mac を操作するリモートデスクトップアプリ。ウインドウを iPhone の画面に合わせて表示し、複数の Mac を Home で切り替え、外出先からも Tailscale で接続。中継サーバーやアカウントは不要です。",

@@ -11,13 +11,13 @@ from __future__ import annotations
 L = {
     "ja": {
         "online": "オンライン", "offline": "オフライン", "open": "開く", "computers": "コンピュータ",
-        "home": "自宅", "away": "外出先", "trackpad": "トラックパッド", "touch": "タッチ操作", "direct": "直接操作",
+        "home": "自宅", "away": "外出先", "trackpad": "トラックパッド", "touch": "タッチ", "hybrid": "Hybrid",
         "typed": "こんにちは、Mac", "server": "Remones のサーバー", "none": "経由しません",
         "direct_tls": "直接・暗号化（TLS）",
     },
     "en": {
         "online": "Online", "offline": "Offline", "open": "Open", "computers": "Computers",
-        "home": "Home", "away": "Away", "trackpad": "Trackpad", "touch": "Touch", "direct": "Direct",
+        "home": "Home", "away": "Away", "trackpad": "Trackpad", "touch": "Touch", "hybrid": "Hybrid",
         "typed": "Hello from iPhone", "server": "Remones server", "none": "not involved",
         "direct_tls": "Direct · encrypted (TLS)",
     },
@@ -98,25 +98,30 @@ def hero(lang: str) -> str:
 
 
 def window_demo(lang: str) -> str:
-    """Desktop (tiny, unreadable) -> Fit Window (readable)."""
+    """Display (whole desktop, tiny) -> Window (one window fitted, readable).
+    Scroll-driven: the small window grows into the phone as you scroll."""
     px, py, pw, ph = 100, 10, 180, 300
     sx, sy, sw, sh = px + 9, py + 9, pw - 18, ph - 18
-    # desktop: a 16:10 Mac screen letterboxed in the portrait phone
     dw = sw - 8
     dh = dw * 10 / 16
     dx, dy = sx + 4, sy + (sh - dh) / 2
-    desktop = (f'<g class="w-desk"><rect class="f-desk" x="{dx}" y="{dy}" width="{dw}" height="{dh}" rx="3"/>'
-               f'<rect class="f-win" x="{dx + 30}" y="{dy + 14}" width="{dw * 0.55}" height="{dh * 0.6}" rx="2"/>'
+    wx, wy, ww, wh = dx + 30, dy + 14, dw * 0.55, dh * 0.6
+    fx, fy, fw, fh = sx, sy + 26, sw, sh - 26
+    style = (f"--wx:{wx - fx:.1f}px;--wy:{wy - fy:.1f}px;--wsx:{ww / fw:.4f};--wsy:{wh / fh:.4f}")
+    desktop = (f'<g class="w-desk s-anim"><rect class="f-desk" x="{dx}" y="{dy}" width="{dw}" height="{dh}" rx="3"/>'
+               f'<rect class="f-win" x="{wx}" y="{wy}" width="{ww}" height="{wh}" rx="2"/>'
                + _lines(dx + 35, dy + 22, dw * 0.45, 5, 1.6, [0.5, 0.95, 0.9, 0.8, 0.92, 0.6, 0.85])
                + '</g>')
-    fit = (f'<g class="w-fit"><rect class="f-win" x="{sx}" y="{sy + 26}" width="{sw}" height="{sh - 26}" rx="14"/>'
+    fit = (f'<g class="w-fit s-anim"><rect class="f-win" x="{fx}" y="{fy}" width="{fw}" height="{fh}" rx="14"/>'
            + _lines(sx + 14, sy + 50, sw - 28, 24, 10, [0.6, 0.96, 0.9, 0.94, 0.7, 0.92, 0.86, 0.55, 0.9, 0.75])
            + '</g>')
-    return f"""<svg class="demo-svg" viewBox="0 0 380 320" role="img" aria-label="{"Desktop では小さすぎて読めない文字が、ウインドウ表示では読める大きさになる" if lang == "ja" else "Text too small to read in Desktop becomes readable in Fit Window"}">
+    label = ("Display では小さすぎて読めない文字が、Window では読める大きさになる" if lang == "ja"
+             else "Text too small to read in Display becomes readable in Window")
+    return f"""<svg class="demo-svg" viewBox="0 0 380 320" style="{style}" role="img" aria-label="{label}">
 {_phone(px, py, pw, ph, 32)}
 {desktop}
 {fit}
-<g class="w-lens"><circle class="f-lens" cx="{dx + 60}" cy="{dy + 40}" r="22"/><path class="f-lens" d="M{dx + 76} {dy + 56} l14 14"/></g>
+<g class="w-lens s-anim"><circle class="f-lens" cx="{dx + 60}" cy="{dy + 40}" r="22"/><path class="f-lens" d="M{dx + 76} {dy + 56} l14 14"/></g>
 </svg>"""
 
 
@@ -130,11 +135,11 @@ def macs_demo(lang: str) -> str:
 <rect class="f-row" x="20" y="{y}" width="340" height="64" rx="16"/>
 <rect class="f-line" x="38" y="{y + 18}" width="34" height="22" rx="4"/><rect class="f-line" x="50" y="{y + 42}" width="10" height="5" rx="1.5"/>
 <text class="f-text f-strong" x="88" y="{y + 28}">{name}</text>
-<circle class="m-dot" cx="93" cy="{y + 44}" r="4.5"/>
-<text class="f-text f-sub m-off" x="104" y="{y + 49}">{t['offline']}</text>
-<text class="f-text f-sub m-on" x="104" y="{y + 49}">{t['online']}</text>
-<rect class="m-btn" x="270" y="{y + 15}" width="74" height="34" rx="17"/>
-<text class="f-text m-btn-text" x="307" y="{y + 37}" text-anchor="middle">{t['open']}</text>
+<circle class="m-dot s-anim" cx="93" cy="{y + 44}" r="4.5"/>
+<text class="f-text f-sub m-off s-anim" x="104" y="{y + 49}">{t['offline']}</text>
+<text class="f-text f-sub m-on s-anim" x="104" y="{y + 49}">{t['online']}</text>
+<rect class="m-btn s-anim" x="270" y="{y + 15}" width="74" height="34" rx="17"/>
+<text class="f-text m-btn-text s-anim" x="307" y="{y + 37}" text-anchor="middle">{t['open']}</text>
 </g>""")
     return f"""<svg class="demo-svg" viewBox="0 0 380 300" role="img" aria-label="{"Home のコンピュータ一覧。MacBook Pro、Mac Studio、Mac mini が順にオンラインになる" if lang == "ja" else "Home’s computer list. MacBook Pro, Mac Studio and Mac mini come online one by one"}">
 <text class="f-text f-title" x="22" y="40">{t['computers']}</text>
@@ -147,22 +152,22 @@ def remote_demo(lang: str) -> str:
     packets = "".join(f'<circle class="r-pkt r-pkt-{i}" cx="118" cy="150" r="5"/>' for i in range(3))
     back = "".join(f'<circle class="r-pkt-back r-pkt-back-{i}" cx="262" cy="158" r="4"/>' for i in range(2))
     return f"""<svg class="demo-svg" viewBox="0 0 380 300" role="img" aria-label="{"iPhone と Mac が、自宅では LAN、外出先では Tailscale で直接つながる" if lang == "ja" else "iPhone and Mac connect directly: over the LAN at home, over Tailscale when away"}">
-<g class="r-phone">{_phone(46, 70, 72, 150, 16)}</g>
+<g class="r-phone s-anim">{_phone(46, 70, 72, 150, 16)}</g>
 <rect class="f-frame" x="262" y="96" width="100" height="70" rx="8"/><rect class="f-desk" x="268" y="102" width="88" height="58" rx="3"/>
 <path class="f-stand" d="M300 166 h24 l4 16 h-32 z"/><rect class="f-stand" x="290" y="180" width="44" height="5" rx="2.5"/>
 <path class="r-link" d="M118 154 H262"/>
 {packets}{back}
-<g class="r-lan"><rect class="r-chip" x="140" y="104" width="100" height="30" rx="15"/><text class="f-text r-chip-text" x="190" y="124" text-anchor="middle">LAN</text></g>
-<g class="r-ts"><rect class="r-chip r-chip-hi" x="140" y="104" width="100" height="30" rx="15"/><text class="f-text r-chip-text r-chip-text-hi" x="190" y="124" text-anchor="middle">Tailscale</text></g>
-<text class="f-text f-sub r-loc-home" x="82" y="250" text-anchor="middle">{t['home']}</text>
-<text class="f-text f-sub r-loc-away" x="82" y="250" text-anchor="middle">{t['away']}</text>
+<g class="r-lan s-anim"><rect class="r-chip" x="140" y="104" width="100" height="30" rx="15"/><text class="f-text r-chip-text" x="190" y="124" text-anchor="middle">LAN</text></g>
+<g class="r-ts s-anim"><rect class="r-chip r-chip-hi" x="140" y="104" width="100" height="30" rx="15"/><text class="f-text r-chip-text r-chip-text-hi" x="190" y="124" text-anchor="middle">Tailscale</text></g>
+<text class="f-text f-sub r-loc-home s-anim" x="82" y="250" text-anchor="middle">{t['home']}</text>
+<text class="f-text f-sub r-loc-away s-anim" x="82" y="250" text-anchor="middle">{t['away']}</text>
 <text class="f-text f-sub" x="312" y="210" text-anchor="middle">{t['home']}</text>
 </svg>"""
 
 
 def input_demo(lang: str) -> str:
     t = L[lang]
-    segs = [t["trackpad"], t["touch"], t["direct"]]
+    segs = [t["touch"], t["trackpad"], t["hybrid"]]
     seg_text = "".join(f'<text class="f-text f-small" x="{78 + i * 112}" y="{170}" text-anchor="middle">{s}</text>' for i, s in enumerate(segs))
     keys = []
     for r, (n, off) in enumerate([(10, 0), (9, 16), (7, 48)]):
@@ -196,3 +201,107 @@ def privacy_diagram(lang: str) -> str:
 <path class="f-arrow" d="M446 198 l12 8 l-12 8 M160 198 l-12 8 l12 8"/>
 <text class="f-text f-strong" x="303" y="246" text-anchor="middle">{t['direct_tls']}</text>
 </svg>"""
+
+
+PG = {
+    "ja": {
+        "view": "表示", "input": "入力モード",
+        "views": [("display", "Display"), ("window", "Window")],
+        "inputs": [("touch", "タッチ"), ("trackpad", "トラックパッド"), ("hybrid", "Hybrid")],
+        "hint": "ここで試せます",
+        "pad": "トラックパッド",
+        "mac_label": "シミュレーションの Mac の画面",
+        "phone_label": "シミュレーションの iPhone。ポインタやタッチで操作できます。キーボードでは矢印キーでカーソルを動かし、Enter でクリックします。",
+        "note": "ページ上のデモです。実際の Mac には接続しません。",
+        "noscript": "このデモを試すには JavaScript を有効にしてください。",
+        "desc": {
+            "display": "Display：Mac の画面全体を表示します。iPhone では小さく見えます。",
+            "window": "Window：選んだウインドウを iPhone の画面に合わせて表示します。Mac 側のウインドウもその形に変わります。",
+            "touch": "タッチ：触れた場所をクリックします。指を動かすと、カーソルも指についてきます。",
+            "trackpad": "トラックパッド：指でなぞるとカーソルが動き、タップでクリックします。",
+            "hybrid": "Hybrid：下のトラックパッド領域から始めた操作はトラックパッド、それ以外はタッチとして扱います。",
+        },
+        "msgs": {"open": "ウインドウを開きました", "close": "ウインドウを閉じました", "button": "ボタンをクリックしました",
+                 "nowin": "開いているウインドウがありません。Dock のアプリをクリックしてください。", "ok": "OK", "done": "完了"},
+        "apps": ["メモ", "ブラウザ", "写真", "ターミナル"],
+    },
+    "en": {
+        "view": "View", "input": "Input mode",
+        "views": [("display", "Display"), ("window", "Window")],
+        "inputs": [("touch", "Touch"), ("trackpad", "Trackpad"), ("hybrid", "Hybrid")],
+        "hint": "Try it here",
+        "pad": "Trackpad",
+        "mac_label": "Simulated Mac screen",
+        "phone_label": "Simulated iPhone. Use a pointer or touch. With a keyboard, arrow keys move the cursor and Enter clicks.",
+        "note": "This is an on-page demo. It does not connect to a real Mac.",
+        "noscript": "Turn on JavaScript to try this demo.",
+        "desc": {
+            "display": "Display: shows the whole Mac screen. It looks small on an iPhone.",
+            "window": "Window: fits the chosen window to the iPhone screen. The window on the Mac takes that shape too.",
+            "touch": "Touch: tap where you want to click. Move your finger and the cursor follows it.",
+            "trackpad": "Trackpad: slide your finger to move the cursor, tap to click.",
+            "hybrid": "Hybrid: gestures that start on the trackpad area at the bottom act as trackpad; everything else acts as touch.",
+        },
+        "msgs": {"open": "Window opened", "close": "Window closed", "button": "Button clicked",
+                 "nowin": "No window is open. Click an app in the Dock.", "ok": "OK", "done": "Done"},
+        "apps": ["Notes", "Browser", "Photos", "Terminal"],
+    },
+}
+
+
+def playground(lang: str) -> str:
+    import json
+    import html as _html
+    t = PG[lang]
+
+    def seg(name: str, legend: str, items, checked: str) -> str:
+        opts = "".join(
+            f'<label><input type="radio" name="{name}" value="{v}"{" checked" if v == checked else ""}><span>{lab}</span></label>'
+            for v, lab in items)
+        return f'<fieldset class="seg"><legend>{legend}</legend><div class="seg-track">{opts}</div></fieldset>'
+
+    l10n = _html.escape(json.dumps({"desc": t["desc"], "msgs": t["msgs"], "apps": t["apps"]}, ensure_ascii=False))
+    dock = "".join(
+        f'<rect class="pg-app pg-app-{i}" data-app="{i}" x="{352 + i * 76}" y="566" width="56" height="44" rx="11"/>'
+        for i in range(4))
+    return f"""<div class="pg" data-pg data-l10n="{l10n}">
+<div class="pg-controls">
+{seg("pg-view", t["view"], t["views"], "display")}
+{seg("pg-input", t["input"], t["inputs"], "touch")}
+</div>
+<p class="pg-desc"><span data-desc="view">{t["desc"]["display"]}</span><br><span data-desc="input">{t["desc"]["touch"]}</span></p>
+<div class="pg-stage">
+<svg class="pg-mac" viewBox="0 0 1040 760" role="img" aria-label="{t["mac_label"]}">
+<rect class="f-frame" x="0" y="0" width="1040" height="665" rx="26"/>
+<svg x="20" y="20" width="1000" height="625" viewBox="0 0 1000 625" overflow="hidden">
+<g id="pg-scene">
+<rect class="f-desk" x="0" y="0" width="1000" height="625"/>
+<rect class="f-menubar" x="0" y="0" width="1000" height="22"/>
+<g id="pg-win" class="pg-win" style="display:none"></g>
+<rect class="f-dock" x="336" y="556" width="328" height="64" rx="18"/>
+{dock}
+<circle id="pg-ripple" class="pg-ripple" cx="0" cy="0" r="18"/>
+<g id="pg-cursor" transform="translate(500 300)"><path class="f-cursor" d="M0 0 L0 30 L8 22.5 L13.5 35 L19 32.5 L13.5 20.5 L24 20.5 Z" stroke-width="2.2" stroke-linejoin="round"/></g>
+</g>
+</svg>
+<path class="f-stand" d="M470 665 h100 l14 70 h-128 z"/><rect class="f-stand" x="420" y="732" width="200" height="14" rx="7"/>
+</svg>
+<div class="pg-phone-wrap">
+<svg class="pg-phone" viewBox="0 0 300 600" tabindex="0" role="application" aria-label="{t["phone_label"]}">
+<defs><clipPath id="pg-clip"><rect x="14" y="14" width="272" height="572" rx="34"/></clipPath></defs>
+<rect class="f-frame" x="0" y="0" width="300" height="600" rx="46"/>
+<g clip-path="url(#pg-clip)">
+<rect class="f-phone" x="14" y="14" width="272" height="572"/>
+<use id="pg-mirror" href="#pg-scene" class="pg-mirror"/>
+<g id="pg-pad" class="pg-pad" style="display:none"><rect x="22" y="430" width="256" height="146" rx="22"/><text class="f-text f-small" x="150" y="510" text-anchor="middle">{t["pad"]}</text></g>
+</g>
+<rect class="f-frame" x="118" y="24" width="64" height="18" rx="9"/>
+</svg>
+<span class="pg-hint" aria-hidden="true">{t["hint"]}</span>
+<span class="pg-nowin" aria-hidden="true">{t["msgs"]["nowin"]}</span>
+</div>
+</div>
+<p class="pg-status visually-hidden" aria-live="polite"></p>
+<p class="pg-note">{t["note"]}</p>
+<noscript><p class="pg-note">{t["noscript"]}</p></noscript>
+</div>"""

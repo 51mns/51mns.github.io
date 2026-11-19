@@ -37,17 +37,17 @@ def home() -> dict:
 
 <section class="value" aria-labelledby="v1-title">
 <div class="value-text">
-<span class="kicker">Fit Window</span>
+<span class="kicker">Window</span>
 <h2 id="v1-title" class="display">Readable. No pinching.</h2>
 <p class="lead">Shrink a big Mac screen onto a phone and the text becomes unreadable. Pick one Mac app in Remones and its window is fitted to your iPhone or iPad screen.</p>
 <ul class="ticks">
 <li>Adjust the text size to taste.</li>
-<li>Switch to Desktop when you want the whole screen.</li>
+<li>Switch to Display when you want the whole Mac screen.</li>
 </ul>
 </div>
-<div class="stage" data-demo="window">
+<div class="stage" data-scrub>
 {demos.window_demo("en")}
-<div class="stage-caption" aria-hidden="true"><span class="chip">Desktop</span><span class="chip">Fit Window</span></div>
+<div class="stage-caption" aria-hidden="true"><span class="chip s-anim">Display</span><span class="chip s-anim">Window</span></div>
 </div>
 </section>
 
@@ -62,7 +62,7 @@ def home() -> dict:
 <li>The Shelf takes you to other windows and Macs in a moment.</li>
 </ul>
 </div>
-<div class="stage" data-demo="macs">
+<div class="stage" data-scrub>
 {demos.macs_demo("en")}
 </div>
 </section>
@@ -78,7 +78,7 @@ def home() -> dict:
 </ul>
 <p><a href="~/tailscale/">Using Remones with Tailscale</a></p>
 </div>
-<div class="stage" data-demo="remote">
+<div class="stage" data-scrub>
 {demos.remote_demo("en")}
 </div>
 </section>
@@ -87,7 +87,7 @@ def home() -> dict:
 <div class="value-text">
 <span class="kicker">Input</span>
 <h2 id="v4-title" class="display">Fingers or keyboard.</h2>
-<p class="lead">Move the pointer like a trackpad, or touch the screen directly. Choose the input mode that suits what you’re doing.</p>
+<p class="lead">Touch the screen directly, move the cursor like a Trackpad, or use Hybrid to have both. Choose the input mode that suits what you’re doing.</p>
 <ul class="ticks">
 <li>Type with the iPhone keyboard. Japanese input is supported.</li>
 <li>Paste text you copied on your iPhone into the Mac.</li>
@@ -106,6 +106,17 @@ def home() -> dict:
 
 </div>
 </div>
+
+<section class="section playground" id="try" aria-labelledby="try-title">
+<div class="wrap">
+<div class="section-head">
+<span class="eyebrow">Try it</span>
+<h2 id="try-title" class="display">Get a feel for it.</h2>
+<p class="lead">Switch the view and input mode, then use the iPhone screen with your finger or mouse. Click an app in the Dock to open a window.</p>
+</div>
+{demos.playground("en")}
+</div>
+</section>
 
 <section class="section" id="how" aria-labelledby="how-title">
 <div class="wrap">
@@ -164,6 +175,7 @@ def home() -> dict:
         "slug": "",
         "nav": "home",
         "dl_bar": True,
+        "scripts": ["assets/js/playground.js"],
         "title": "Remones — Your iPhone becomes your Mac.",
         "title_is_full": True,
         "description": "Remones is a remote desktop app for controlling your own Mac from iPhone and iPad. Windows fitted to your screen, all your Macs on one Home, and access from away via Tailscale. No relay servers, no account.",

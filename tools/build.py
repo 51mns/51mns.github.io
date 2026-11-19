@@ -127,6 +127,7 @@ def render(page: dict, lang: str) -> tuple[str, str]:
         nav_items.append(f'<li><a href="{href}"{current}>{label}</a></li>')
 
     robots = '\n<meta name="robots" content="noindex">' if page.get("noindex") else ""
+    extra_scripts = "".join(f'\n<script src="^/{src}" defer></script>' for src in page.get("scripts", []))
     dl_href = "#download" if page.get("dl_bar") else "~/download/"
     body_class = ' class="has-dl-bar"' if page.get("dl_bar") else ""
     dl_bar = ""
@@ -159,7 +160,7 @@ def render(page: dict, lang: str) -> tuple[str, str]:
 <link rel="icon" href="^/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="^/apple-touch-icon.png">
 <link rel="stylesheet" href="^/assets/css/site.css">
-<script src="^/assets/js/site.js" defer></script>
+<script src="^/assets/js/site.js" defer></script>{extra_scripts}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Remones">
 <meta property="og:title" content="{html.escape(full_title)}">

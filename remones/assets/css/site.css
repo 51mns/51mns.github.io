@@ -764,3 +764,142 @@ h3 { font-size: 1.125rem; font-weight: 650; margin-bottom: var(--space-s); }
 .more-item .glyph svg { width: 24px; height: 24px; }
 .more-item h3 { font-size: 1.0625rem; margin-bottom: var(--space-xs); }
 .more-item p { color: var(--text-secondary); margin: 0; }
+
+/* =====================================================================
+   v3 — playground ("try it")
+   ===================================================================== */
+.playground .section-head { margin-bottom: var(--space-l); }
+.pg { background: var(--card); border-radius: var(--radius-deck); padding: var(--space-xl) var(--space-l); box-shadow: var(--shadow-card); }
+.pg-controls { display: flex; flex-wrap: wrap; gap: var(--space-l) var(--space-xl); justify-content: center; }
+.seg { border: 0; margin: 0; padding: 0; min-width: 0; text-align: center; }
+.seg legend { font-size: 0.8125rem; font-weight: 650; color: var(--text-secondary); margin: 0 auto var(--space-s); padding: 0; }
+.seg-track { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--fill); }
+.seg label { position: relative; }
+.seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.seg span { display: inline-flex; align-items: center; min-height: 40px; padding: 0 var(--space-l); border-radius: 999px; font-size: 0.9375rem; font-weight: 600; color: var(--text-secondary); transition: background-color 200ms, color 200ms; cursor: pointer; white-space: nowrap; }
+.seg input:checked + span { background: var(--win); color: var(--primary); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
+.seg input:focus-visible + span { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.pg-desc { text-align: center; color: var(--text-secondary); font-size: 0.9375rem; max-width: 40rem; margin: var(--space-l) auto var(--space-xl); min-height: 3.5em; }
+.pg-stage { display: grid; gap: var(--space-xl); align-items: center; justify-items: center; }
+.pg-mac { width: 100%; max-width: 640px; height: auto; }
+.pg-phone-wrap { position: relative; width: min(260px, 72vw); }
+.pg-phone { width: 100%; height: auto; display: block; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; cursor: crosshair; border-radius: 40px; }
+.pg-phone:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 4px; }
+.pg-mirror { transform-origin: 0 0; transition: transform 420ms var(--ease-out); }
+.pg-pad rect { fill: var(--pad); stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.is-pad-active .pg-pad rect { fill: color-mix(in srgb, var(--hi) 30%, transparent); }
+.pg-hint, .pg-nowin {
+  position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); pointer-events: none;
+  background: var(--hi); color: var(--hi-ink); font-weight: 700; font-size: 0.875rem; padding: 0.45em 0.9em; border-radius: 999px; white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18); transition: opacity 300ms;
+}
+.pg-nowin { white-space: normal; width: 80%; text-align: center; top: 22%; background: var(--card); color: var(--primary); font-weight: 600; font-size: 0.8125rem; opacity: 0; }
+.is-nowin .pg-nowin { opacity: 1; }
+.is-used .pg-hint, :not(.is-ready) > .pg-stage .pg-hint { opacity: 0; }
+.pg-note { text-align: center; font-size: 0.8125rem; color: var(--text-secondary); margin: var(--space-xl) 0 0; }
+.pg-app { fill: var(--line-strong); transform-box: fill-box; transform-origin: 50% 100%; }
+.pg-app-0 { fill: var(--hi); }
+.pg-wtitle { font-size: 15px; font-weight: 650; }
+.pg-btn { fill: var(--action); }
+.pg-btn.is-done { fill: var(--live); }
+.pg-btn-text { fill: var(--on-action); font-size: 16px; font-weight: 700; }
+.pg-btn-text.is-done { fill: #000; }
+.pg-ripple { fill: none; stroke: var(--hi); stroke-width: 4; opacity: 0; transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .pg-ripple.is-on { animation: pg-ripple 500ms ease-out; }
+  .pg-app.is-bounce { animation: pg-bounce 600ms ease-out; }
+  .pg-win.is-opening { transform-box: fill-box; animation: pg-open 260ms var(--ease-out); }
+  @keyframes pg-ripple { from { opacity: 1; transform: scale(0.4); } to { opacity: 0; transform: scale(2.2); } }
+  @keyframes pg-bounce { 30% { transform: translateY(-22px); } 60% { transform: none; } 80% { transform: translateY(-6px); } }
+  @keyframes pg-open { from { opacity: 0; } to { opacity: 1; } }
+}
+@media (prefers-reduced-motion: reduce) { .pg-mirror { transition: none; } }
+@media (min-width: 840px) {
+  .pg { padding: 40px; }
+  .pg-stage { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 48px; }
+}
+
+/* =====================================================================
+   v3 — scroll-driven feature demos ([data-scrub])
+   Native: animation-timeline (view timeline). Fallback: site.js sets --p.
+   Reduced motion: no animation, static end state.
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  [data-scrub] .s-anim {
+    animation-duration: 1s !important; animation-timing-function: linear !important;
+    animation-fill-mode: both !important; animation-iteration-count: 1 !important;
+    animation-play-state: paused !important; animation-delay: calc(var(--p, 0) * -0.999s) !important;
+  }
+  [data-scrub] .w-desk { animation-name: s-w-desk !important; }
+  [data-scrub] .w-lens { animation-name: s-w-lens !important; }
+  [data-scrub] .w-fit { transform-origin: 0 0; animation-name: s-w-fit !important; }
+  [data-scrub] .m-row-0 .m-dot { animation-name: s-m-dot-0 !important; }
+  [data-scrub] .m-row-1 .m-dot { animation-name: s-m-dot-1 !important; }
+  [data-scrub] .m-row-2 .m-dot { animation-name: s-m-dot-2 !important; }
+  [data-scrub] .m-row-0 .m-off { animation-name: s-m-off-0 !important; }
+  [data-scrub] .m-row-1 .m-off { animation-name: s-m-off-1 !important; }
+  [data-scrub] .m-row-2 .m-off { animation-name: s-m-off-2 !important; }
+  [data-scrub] .m-row-0 .m-on { animation-name: s-m-on-0 !important; }
+  [data-scrub] .m-row-1 .m-on { animation-name: s-m-on-1 !important; }
+  [data-scrub] .m-row-2 .m-on { animation-name: s-m-on-2 !important; }
+  [data-scrub] .m-row-0 .m-btn { animation-name: s-m-btn-0 !important; }
+  [data-scrub] .m-row-1 .m-btn { animation-name: s-m-btn-1 !important; }
+  [data-scrub] .m-row-2 .m-btn { animation-name: s-m-btn-2 !important; }
+  [data-scrub] .m-row-0 .m-btn-text { animation-name: s-m-bt-0 !important; }
+  [data-scrub] .m-row-1 .m-btn-text { animation-name: s-m-bt-1 !important; }
+  [data-scrub] .m-row-2 .m-btn-text { animation-name: s-m-bt-2 !important; }
+  [data-scrub] .r-lan, [data-scrub] .r-loc-home { animation-name: s-r-a !important; }
+  [data-scrub] .r-ts, [data-scrub] .r-loc-away { animation-name: s-r-b !important; }
+  [data-scrub] .r-phone { animation-name: s-r-phone !important; }
+
+  @supports (animation-timeline: view()) {
+    [data-scrub] { view-timeline-name: --scrub; }
+    [data-scrub] .s-anim {
+      animation-play-state: running !important; animation-delay: 0s !important;
+      animation-duration: auto !important;
+      animation-timeline: --scrub; animation-range: cover 15% cover 60%;
+    }
+  }
+
+  @keyframes s-w-desk { 0%, 45% { opacity: 1; } 70%, 100% { opacity: 0; } }
+  @keyframes s-w-lens { 0% { opacity: 0; } 10%, 30% { opacity: 1; } 42%, 100% { opacity: 0; } }
+  @keyframes s-w-fit {
+    0%, 32% { opacity: 0; transform: translate(var(--wx), var(--wy)) scale(var(--wsx), var(--wsy)); }
+    40% { opacity: 1; transform: translate(var(--wx), var(--wy)) scale(var(--wsx), var(--wsy)); }
+    80%, 100% { opacity: 1; transform: none; }
+  }
+  @keyframes s-m-dot-0 { 0%, 20% { fill: var(--line-strong); } 26%, 100% { fill: var(--live); } }
+  @keyframes s-m-dot-1 { 0%, 45% { fill: var(--line-strong); } 51%, 100% { fill: var(--live); } }
+  @keyframes s-m-dot-2 { 0%, 70% { fill: var(--line-strong); } 76%, 100% { fill: var(--live); } }
+  @keyframes s-m-off-0 { 0%, 20% { opacity: 1; } 26%, 100% { opacity: 0; } }
+  @keyframes s-m-off-1 { 0%, 45% { opacity: 1; } 51%, 100% { opacity: 0; } }
+  @keyframes s-m-off-2 { 0%, 70% { opacity: 1; } 76%, 100% { opacity: 0; } }
+  @keyframes s-m-on-0 { 0%, 20% { opacity: 0; } 26%, 100% { opacity: 1; } }
+  @keyframes s-m-on-1 { 0%, 45% { opacity: 0; } 51%, 100% { opacity: 1; } }
+  @keyframes s-m-on-2 { 0%, 70% { opacity: 0; } 76%, 100% { opacity: 1; } }
+  @keyframes s-m-btn-0 { 0%, 20% { fill: var(--fill); } 26%, 100% { fill: var(--action); } }
+  @keyframes s-m-btn-1 { 0%, 45% { fill: var(--fill); } 51%, 100% { fill: var(--action); } }
+  @keyframes s-m-btn-2 { 0%, 70% { fill: var(--fill); } 76%, 100% { fill: var(--action); } }
+  @keyframes s-m-bt-0 { 0%, 20% { fill: var(--text-secondary); } 26%, 100% { fill: var(--on-action); } }
+  @keyframes s-m-bt-1 { 0%, 45% { fill: var(--text-secondary); } 51%, 100% { fill: var(--on-action); } }
+  @keyframes s-m-bt-2 { 0%, 70% { fill: var(--text-secondary); } 76%, 100% { fill: var(--on-action); } }
+  @keyframes s-r-a { 0%, 42% { opacity: 1; } 58%, 100% { opacity: 0; } }
+  @keyframes s-r-b { 0%, 42% { opacity: 0; } 58%, 100% { opacity: 1; } }
+  @keyframes s-r-phone { 0%, 40% { transform: none; } 60%, 100% { transform: translateY(18px); } }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-scrub] .chip.s-anim:nth-child(1) { animation-name: s-chip-a !important; }
+  [data-scrub] .chip.s-anim:nth-child(2) { animation-name: s-chip-b !important; }
+  @keyframes s-chip-a { 0%, 50% { background: var(--hi); color: var(--hi-ink); } 56%, 100% { background: var(--fill); color: var(--text-secondary); } }
+  @keyframes s-chip-b { 0%, 50% { background: var(--fill); color: var(--text-secondary); } 56%, 100% { background: var(--hi); color: var(--hi-ink); } }
+}
+/* static end state for the window chips */
+[data-scrub] .chip:nth-child(2) { background: var(--hi); color: var(--hi-ink); }
+@media (max-width: 599.98px) {
+  .pg { padding: var(--space-l) var(--space-m); }
+  .pg-phone-wrap { width: min(210px, 58vw); }
+  .pg-stage { gap: var(--space-l); }
+}
+@media (max-width: 399.98px) {
+  .seg span { padding: 0 10px; font-size: 0.8125rem; }
+}
