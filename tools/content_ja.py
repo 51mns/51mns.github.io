@@ -57,7 +57,7 @@ def home() -> dict:
 
 <section class="value" aria-labelledby="v2-title">
 <div class="value-text">
-<span class="kicker">複数の Mac</span>
+<span class="kicker">複数の Mac</span> <span class="badge badge-plus">Plus</span>
 <h2 id="v2-title" class="display">すべての Mac が、<wbr>ひとつの Home に。</h2>
 <p class="lead">自宅の Mac も、仕事の Mac も。Home に並べて、開く前からオンラインかどうかが分かります。</p>
 <ul class="ticks">
@@ -73,7 +73,7 @@ def home() -> dict:
 
 <section class="value" aria-labelledby="v3-title">
 <div class="value-text">
-<span class="kicker">外出先から</span>
+<span class="kicker">外出先から</span> <span class="badge badge-plus">Plus</span>
 <h2 id="v3-title" class="display">家の外でも。<wbr>ポート開放なしで。</h2>
 <p class="lead">家では同じ Wi-Fi で、外出先では Tailscale で。iPhone は一度つないだ Mac の経路を覚えていて、使える経路を選んで接続を試みます。</p>
 <ul class="ticks">
@@ -158,10 +158,10 @@ def home() -> dict:
 <div class="card" style="padding:32px">
 {c.accent_strip()}
 <span class="eyebrow">Remones Plus</span>
-<h2 id="plus-title" class="display">好きな色の<wbr>アイコンで。</h2>
-<p class="lead" style="max-width:40rem">Remones Plus は、アプリアイコンとアプリ内のアクセントカラーを選べるサブスクリプションです。標準とレモンは無料で使えます。</p>
+<h2 id="plus-title" class="display">外出先から、<wbr>いつもの Mac へ。</h2>
+<p class="lead" style="max-width:40rem">同じネットワークの Mac 1 台には無料で接続できます。Remones Plus では、外出先からの接続、2 台目以降の Mac、ピクチャ・イン・ピクチャ、追加のアイコンカラーなどを使えます。</p>
 {c.icon_row("ja")}
-<p class="fineprint">Remones Plus は任意です。価格や無料体験の条件は、App Store とアプリ内の購入画面に表示されます。</p>
+<p class="fineprint">月額・年額のほかに買い切りを選べます。購入はストアごとで、同じ Apple ID の iPhone・iPad で使えます。Mac アプリは無料です。</p>
 </div>
 </div>
 </section>
@@ -465,9 +465,9 @@ def support() -> dict:
         ("通信は暗号化されていますか？",
          "<p>はい。端末間の通信には TLS を使います。はじめて接続するときは、iPhone と Mac に表示される 6 桁のコードを照らし合わせて、正しい Mac であることを確かめてから承認してください。</p>"),
         ("自宅の外から使えますか？",
-         "<p>Tailscale などの VPN を使うと使えます。<a href=\"~/tailscale/\">外出先から使う</a>をご覧ください。</p>"),
+         "<p>Remones Plus と Tailscale などの VPN を使うと接続できます。<a href=\"~/tailscale/\">外出先から使う</a>をご覧ください。</p>"),
         ("複数の Mac を登録できますか？",
-         "<p>はい。Home に複数の Mac を並べて、切り替えて使えます。</p>"),
+         "<p>はい。Remones Plus で 2 台目以降の Mac を Home から開けます。</p>"),
         ("2 台の iPhone から同時に操作できますか？",
          "<p>1 台の Mac を操作できるのは、同時に 1 台です。ほかの端末で接続中の場合は、そちらを閉じてからもう一度お試しください。</p>"),
         ("画面が真っ黒になります",
@@ -481,7 +481,9 @@ def support() -> dict:
         ("Mac の登録を解除するには？",
          "<p>iPhone では、Home の Mac の「…」メニューから登録を解除します。Mac 上のファイルやアプリは削除されません。Mac 側の承認済み端末も、必要に応じて Mac アプリから削除してください。</p>"),
         ("Remones Plus とは？",
-         "<p>アプリアイコンとアプリ内のアクセントカラーを選べる、任意のサブスクリプションです。標準とレモンは無料です。価格はアプリ内と App Store に表示されます。解約は iPhone の「設定」→ 自分の名前 →「サブスクリプション」から行えます。</p>"),
+         "<p>外出先からの接続や 2 台目以降の Mac などを使える追加プランです。月額・年額・買い切りから選べます。</p>"),
+        ("購入した Plus を iPad でも使えますか？",
+         "<p>はい。購入はストアごとで、同じ Apple ID の iPhone・iPad で使えます。別の端末では購入画面の「購入を復元」をタップしてください。</p>"),
     ]
     items = "\n".join(f'<details><summary>{q}</summary><div class="answer">{a}</div></details>' for q, a in faq)
     body = f"""

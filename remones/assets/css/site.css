@@ -799,6 +799,10 @@ h3 { font-size: 1.125rem; font-weight: 650; margin-bottom: var(--space-s); }
 .pg-note { text-align: center; font-size: 0.8125rem; color: var(--text-secondary); margin: var(--space-xl) 0 0; }
 .pg-app { fill: var(--line-strong); transform-box: fill-box; transform-origin: 50% 100%; }
 .pg-app-0 { fill: var(--hi); }
+.pg-win-bg { fill: var(--card); stroke: var(--line-strong); stroke-width: 2; }
+.pg-win .f-titlebar { fill: var(--win); }
+.pg-win .f-line2 { fill: var(--text-secondary); }
+.pg-win .f-line { fill: var(--line-strong); }
 .pg-wtitle { font-size: 15px; font-weight: 650; }
 .pg-btn { fill: var(--action); }
 .pg-btn.is-done { fill: var(--live); }

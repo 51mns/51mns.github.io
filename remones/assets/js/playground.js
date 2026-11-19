@@ -17,7 +17,6 @@
   var winG = root.querySelector("#pg-win");
   var cursor = root.querySelector("#pg-cursor");
   var ripple = root.querySelector("#pg-ripple");
-  var hint = root.querySelector(".pg-hint");
   var status = root.querySelector(".pg-status");
   var descView = root.querySelector('[data-desc="view"]');
   var descInput = root.querySelector('[data-desc="input"]');
@@ -182,9 +181,16 @@
     root.classList.add("is-used");
   });
 
+  // Dismiss the hint on the first phone gesture or control activation.
+  root.addEventListener("click", function (e) {
+    if (e.target.closest(".pg-controls")) root.classList.add("is-used");
+  });
+
   // ---------- controls ----------
   root.addEventListener("change", function (e) {
     var t = e.target;
+    if (t.name !== "pg-view" && t.name !== "pg-input") return;
+    root.classList.add("is-used");
     if (t.name === "pg-view") { state.view = t.value; descView.textContent = L.desc[t.value]; drawWindow(); }
     if (t.name === "pg-input") { state.input = t.value; descInput.textContent = L.desc[t.value]; }
     applyView();

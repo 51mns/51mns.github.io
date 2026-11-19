@@ -53,7 +53,7 @@ def home() -> dict:
 
 <section class="value" aria-labelledby="v2-title">
 <div class="value-text">
-<span class="kicker">Multiple Macs</span>
+<span class="kicker">Multiple Macs</span> <span class="badge badge-plus">Plus</span>
 <h2 id="v2-title" class="display">Every Mac, on one Home.</h2>
 <p class="lead">Your home Mac and your work Mac, side by side. Home shows which ones are online before you open them.</p>
 <ul class="ticks">
@@ -69,7 +69,7 @@ def home() -> dict:
 
 <section class="value" aria-labelledby="v3-title">
 <div class="value-text">
-<span class="kicker">Away from home</span>
+<span class="kicker">Away from home</span> <span class="badge badge-plus">Plus</span>
 <h2 id="v3-title" class="display">Away from home. No port forwarding.</h2>
 <p class="lead">Same Wi-Fi at home, Tailscale when you’re out. Your iPhone remembers the routes to a Mac it has connected to and tries one that’s available.</p>
 <ul class="ticks">
@@ -154,10 +154,10 @@ def home() -> dict:
 <div class="card" style="padding:32px">
 {c.accent_strip()}
 <span class="eyebrow">Remones Plus</span>
-<h2 id="plus-title" class="display">An icon in your colour.</h2>
-<p class="lead" style="max-width:40rem">Remones Plus is a subscription that lets you choose the app icon and the matching in-app accent colour. Standard and Lemon are free.</p>
+<h2 id="plus-title" class="display">Take your Mac with you.</h2>
+<p class="lead" style="max-width:40rem">Connect to one Mac on your local network for free. Remones Plus adds connections away from home, access to additional Macs, Picture in Picture, and more icon colours.</p>
 {c.icon_row("en")}
-<p class="fineprint">Remones Plus is optional. Prices and free-trial terms are shown on the App Store and in the app’s purchase screen.</p>
+<p class="fineprint">Choose a monthly or yearly subscription, or a one-time lifetime purchase. Purchases are per store and work on iPhone and iPad with the same Apple ID. The Mac app is free.</p>
 </div>
 </div>
 </section>
@@ -461,9 +461,9 @@ def support() -> dict:
         ("Is the connection encrypted?",
          "<p>Yes, connections use TLS. When you connect for the first time, compare the six-digit code on your iPhone and Mac to make sure it’s the right Mac before approving.</p>"),
         ("Can I use it away from home?",
-         "<p>Yes, with a VPN such as Tailscale. See <a href=\"~/tailscale/\">Use it away from home</a>.</p>"),
+         "<p>Yes, with Remones Plus and a VPN such as Tailscale. See <a href=\"~/tailscale/\">Use it away from home</a>.</p>"),
         ("Can I add more than one Mac?",
-         "<p>Yes. Your Macs appear side by side on Home and you can switch between them.</p>"),
+         "<p>Yes. Remones Plus lets you open additional Macs from Home.</p>"),
         ("Can two iPhones control the same Mac at once?",
          "<p>One device controls a Mac at a time. If another device is connected, close it there and try again.</p>"),
         ("The screen is black",
@@ -477,7 +477,9 @@ def support() -> dict:
         ("How do I remove a Mac?",
          "<p>On your iPhone, use the “…” menu of the Mac on Home. Files and apps on the Mac are not deleted. You can also remove the approved device in the Mac app.</p>"),
         ("What is Remones Plus?",
-         "<p>An optional subscription that lets you choose the app icon and in-app accent colour. Standard and Lemon are free. Prices are shown in the app and on the App Store. Cancel in Settings → your name → Subscriptions on your iPhone.</p>"),
+         "<p>An optional upgrade that adds connections away from home and access to additional Macs. Choose monthly, yearly, or a one-time lifetime purchase.</p>"),
+        ("Can I use my Plus purchase on an iPad?",
+         "<p>Yes. Purchases are per store and work on iPhone and iPad with the same Apple ID. On another device, tap Restore Purchases on the purchase screen.</p>"),
     ]
     items = "\n".join(f'<details><summary>{q}</summary><div class="answer">{a}</div></details>' for q, a in faq)
     body = f"""
