@@ -414,3 +414,344 @@ h3 { font-size: 1.125rem; font-weight: 650; margin-bottom: var(--space-s); }
   body { background: #fff; color: #000; }
   .card, .steps > li { box-shadow: none; border: 1px solid #ccc; }
 }
+
+/* =====================================================================
+   v2 — landing page, download affordances, product demos
+   ===================================================================== */
+:root {
+  --dev-frame: #1d1d1f;
+  --dev-phone: #f5f5f7;
+  --desk: #dfe2e9;
+  --win: #ffffff;
+  --titlebar: #ececf0;
+  --line: rgba(0, 0, 0, 0.13);
+  --line-strong: rgba(0, 0, 0, 0.5);
+  --pad: rgba(0, 0, 0, 0.05);
+  --hi: var(--accent-lemon);
+  --hi-ink: #000000;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dev-frame: #5a5b61;
+    --dev-phone: #0e0f12;
+    --desk: #30333b;
+    --win: #3a3b41;
+    --titlebar: #46474d;
+    --line: rgba(255, 255, 255, 0.2);
+    --line-strong: rgba(255, 255, 255, 0.72);
+    --pad: rgba(255, 255, 255, 0.06);
+  }
+}
+
+/* Japanese line breaking: break only at <wbr> / spaces in display type */
+.display { word-break: keep-all; overflow-wrap: anywhere; line-break: strict; text-wrap: balance; }
+
+/* header download button */
+.header-dl { min-height: 36px; padding: 0 var(--space-l); font-size: 0.875rem; margin-left: var(--space-s); }
+.header-dl svg { width: 16px; height: 16px; }
+@media (max-width: 599.98px) {
+  .header-dl { margin-left: auto; }
+  .header-dl + .lang-switch { margin-left: 0; }
+}
+
+/* sticky download bar (JS reveals it after the hero) */
+.dl-bar {
+  position: fixed; z-index: 6; left: 50%; bottom: max(var(--space-m), env(safe-area-inset-bottom));
+  transform: translate(-50%, calc(100% + 32px)); opacity: 0;
+  display: flex; align-items: center; gap: var(--space-s);
+  width: max-content; max-width: calc(100vw - 2 * var(--space-m));
+  padding: var(--space-s); padding-left: var(--space-l); border-radius: 999px;
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 0 0 1px var(--hairline), 0 12px 32px rgba(0, 0, 0, 0.18);
+  transition: transform 420ms var(--ease-out), opacity 300ms var(--ease-out);
+}
+.dl-bar.is-shown { transform: translate(-50%, 0); opacity: 1; }
+.dl-bar .brand-mini { display: inline-flex; align-items: center; gap: var(--space-s); font-weight: 700; margin-right: var(--space-s); white-space: nowrap; }
+.dl-bar .brand-mini svg { width: 22px; height: 22px; }
+.dl-bar .btn { min-height: 40px; padding: 0 var(--space-l); font-size: 0.875rem; white-space: nowrap; }
+.dl-bar .btn svg { width: 16px; height: 16px; }
+@media (max-width: 479.98px) { .dl-bar .brand-mini span { display: none; } .dl-bar { padding-left: var(--space-s); } .dl-bar .btn { padding: 0 var(--space-m); } }
+.has-dl-bar .site-footer { padding-bottom: 104px; }
+
+/* ---------- v2 hero ---------- */
+.hero2 { padding: 40px 0 24px; text-align: center; overflow: hidden; }
+.hero2 .eyebrow { display: inline-flex; align-items: center; gap: var(--space-s); margin-bottom: var(--space-l); }
+.hero2 .eyebrow img { width: 28px; height: 28px; }
+.hero2 h1 { font-size: clamp(2rem, 0.6rem + 6vw, 5.25rem); font-weight: 800; line-height: 1.12; letter-spacing: -0.015em; margin: 0 auto var(--space-l); max-width: 14em; }
+:lang(ja) .hero2 h1 { letter-spacing: 0; line-height: 1.18; }
+.hero2 .lead { font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.3125rem); max-width: 36rem; margin: 0 auto var(--space-xl); }
+.hero2 .actions { justify-content: center; }
+.hero2 .fineprint { margin: var(--space-l) auto 0; max-width: 36rem; }
+.hero-stage { margin: 40px auto 0; max-width: 960px; }
+.hero-stage .demo-svg { width: 100%; height: auto; }
+.demo-steps { list-style: none; margin: var(--space-l) auto 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-s) var(--space-l); font-size: 0.9375rem; color: var(--text-secondary); }
+.demo-steps li { margin: 0; display: inline-flex; align-items: center; gap: var(--space-s); }
+.demo-steps b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--fill); color: var(--primary); font-size: 0.75rem; }
+@media (min-width: 840px) { .hero2 { padding: 80px 0 32px; } .hero-stage { margin-top: 56px; } }
+
+/* ---------- value statements ---------- */
+.values { padding: 40px 0; }
+.value { display: grid; gap: var(--space-xl); align-items: center; padding: 48px 0; }
+.value + .value { border-top: 1px solid var(--hairline); }
+.value h2 { font-size: clamp(1.875rem, 1.1rem + 3.4vw, 3.25rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: var(--space-l); }
+:lang(ja) .value h2 { letter-spacing: 0; line-height: 1.22; }
+.value .lead { margin-bottom: var(--space-l); }
+.value .kicker { display: inline-block; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.3em 0.75em; border-radius: 999px; background: var(--hi); color: var(--hi-ink); margin-bottom: var(--space-l); }
+.value ul.ticks { list-style: none; padding: 0; margin: 0; }
+.value ul.ticks li { position: relative; padding-left: 1.6em; color: var(--text-secondary); }
+.value ul.ticks li::before { content: ""; position: absolute; left: 0.15em; top: 0.62em; width: 0.7em; height: 0.38em; border-left: 2px solid var(--primary); border-bottom: 2px solid var(--primary); transform: rotate(-45deg); }
+.stage { background: var(--card); border-radius: var(--radius-deck); padding: var(--space-xl); box-shadow: var(--shadow-card); }
+.stage .demo-svg { width: 100%; max-width: 420px; margin: 0 auto; }
+.stage-caption { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--space-s); margin-top: var(--space-m); }
+.chip { font-size: 0.8125rem; font-weight: 650; padding: 0.35em 0.85em; border-radius: 999px; background: var(--fill); color: var(--text-secondary); }
+@media (min-width: 840px) {
+  .value { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; padding: 88px 0; }
+  .value:nth-child(even) .value-text { order: 2; }
+}
+
+/* ---------- steps with progress line ---------- */
+.flow { list-style: none; padding: 0; margin: var(--space-xl) 0 0; display: grid; gap: var(--space-xl); position: relative; counter-reset: step; }
+.flow::before, .flow::after { content: ""; position: absolute; background: var(--raised); border-radius: 2px; }
+.flow::before { left: 21px; top: 22px; bottom: 22px; width: 3px; }
+.flow::after { left: 21px; top: 22px; bottom: 22px; width: 3px; background: var(--hi); transform-origin: top; }
+.flow > li { position: relative; padding-left: 68px; margin: 0; counter-increment: step; }
+.flow > li::before {
+  content: counter(step); position: absolute; left: 0; top: 0; width: 46px; height: 46px; border-radius: 50%;
+  display: grid; place-items: center; font-weight: 800; font-size: 1.125rem;
+  background: var(--action); color: var(--on-action); box-shadow: 0 0 0 6px var(--canvas);
+}
+.flow h3 { font-size: 1.25rem; margin: 8px 0 var(--space-s); }
+.flow p { color: var(--text-secondary); margin-bottom: var(--space-s); }
+@media (min-width: 840px) {
+  .flow { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-xl); }
+  .flow::before, .flow::after { left: 23px; right: calc(33.333% - 23px); top: 22px; bottom: auto; width: auto; height: 3px; }
+  .flow::after { transform-origin: left; }
+  .flow > li { padding-left: 0; padding-top: 68px; }
+}
+.js .flow::after { transform: scaleY(0); transition: transform 1.6s var(--ease-out); }
+@media (min-width: 840px) { .js .flow::after { transform: scaleX(0); } }
+.js .flow.is-in::after { transform: none; }
+.js .flow > li::before { transition: background-color 300ms, color 300ms; }
+.js .flow:not(.is-in) > li::before { background: var(--raised); color: var(--text-secondary); }
+.js .flow.is-in > li:nth-child(2)::before { transition-delay: 0.6s; }
+.js .flow.is-in > li:nth-child(3)::before { transition-delay: 1.2s; }
+
+/* ---------- privacy diagram ---------- */
+.privacy2 .demo-svg { width: 100%; max-width: 640px; margin: var(--space-xl) auto 0; }
+.band .demo-svg { --line: rgba(255, 255, 255, 0.25); --line-strong: rgba(255, 255, 255, 0.85); --desk: #2b2d34; --dev-frame: #4a4a4f; --dev-phone: #0e0f12; }
+.band .f-text { fill: #fff; }
+.band .f-sub { fill: rgba(255, 255, 255, 0.72); }
+
+/* ---------- final download ---------- */
+.final-dl { text-align: center; }
+.final-dl h2 { font-size: clamp(2rem, 1.2rem + 3.4vw, 3.5rem); font-weight: 800; line-height: 1.15; margin-bottom: var(--space-l); }
+.final-dl .platforms { text-align: left; margin-top: 40px; }
+.final-dl .icon-big { width: 112px; height: 112px; margin: 0 auto var(--space-xl); }
+
+/* =====================================================================
+   demo drawing primitives
+   ===================================================================== */
+.demo-svg text, .f-text { font-family: var(--font); }
+.f-frame { fill: var(--dev-frame); }
+.f-phone { fill: var(--dev-phone); }
+.f-desk { fill: var(--desk); }
+.f-menubar { fill: var(--win); opacity: 0.7; }
+.f-dock { fill: var(--win); opacity: 0.75; }
+.f-dockicon { fill: var(--line); }
+.f-dockicon-hi { fill: var(--line-strong); }
+.f-run { fill: var(--line-strong); }
+.f-stand { fill: var(--dev-frame); opacity: 0.55; }
+.f-win { fill: var(--win); }
+.f-titlebar { fill: var(--titlebar); }
+.f-line { fill: var(--line); }
+.f-line2 { fill: var(--line-strong); }
+.f-pad { fill: var(--pad); stroke: var(--line); stroke-width: 1.5; }
+.f-dot-r { fill: #ff5f57; } .f-dot-y { fill: #febc2e; } .f-dot-g { fill: #28c840; }
+.f-cursor { fill: #000; stroke: #fff; }
+.f-finger { fill: var(--hi); fill-opacity: 0.9; stroke: #000; stroke-opacity: 0.25; stroke-width: 1.5; }
+.f-ripple { fill: none; stroke: var(--hi); stroke-width: 3; opacity: 0; }
+.h-ghost { fill: none; stroke: var(--hi); stroke-width: 3; }
+.f-lens { fill: none; stroke: var(--line-strong); stroke-width: 3; stroke-linecap: round; }
+.f-text { fill: var(--primary); font-size: 15px; }
+.f-strong { font-weight: 650; font-size: 16px; }
+.f-sub { fill: var(--text-secondary); font-size: 13px; }
+.f-title { font-weight: 750; font-size: 20px; }
+.f-small { font-size: 12.5px; font-weight: 600; }
+.f-type { font-size: 26px; font-weight: 600; }
+.m-dot { fill: var(--live); }
+.m-btn { fill: var(--action); }
+.m-btn-text { fill: var(--on-action); font-weight: 650; font-size: 14px; }
+.r-link { stroke: var(--line-strong); stroke-width: 3; stroke-dasharray: 2 8; stroke-linecap: round; fill: none; }
+.r-pkt { fill: var(--hi); }
+.r-pkt-back { fill: var(--line-strong); }
+.r-chip { fill: var(--fill); stroke: var(--line); }
+.r-chip-hi { fill: var(--hi); stroke: none; }
+.r-chip-text { font-size: 14px; font-weight: 700; }
+.r-chip-text-hi { fill: var(--hi-ink); }
+.f-seg { fill: var(--fill); }
+.i-seg-hi { fill: var(--win); stroke: var(--line); }
+.f-key { fill: var(--win); stroke: var(--line); }
+.i-caret { fill: var(--accent-blue); }
+.f-cloud { fill: none; stroke: var(--line-strong); stroke-width: 2.5; stroke-dasharray: 6 6; }
+.f-strike { stroke: var(--hi); stroke-width: 4; stroke-linecap: round; }
+.p-link { stroke: var(--hi); stroke-width: 4; stroke-linecap: round; fill: none; stroke-dasharray: 10 10; }
+.f-arrow { fill: none; stroke: var(--hi); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+
+/* elements whose END state is hidden (keyframes animate them in) */
+.h-finger, .h-trackpad, .h-ghost, .w-desk, .w-lens, .m-off, .r-lan, .r-loc-home, .i-cover { opacity: 0; }
+
+/* =====================================================================
+   demo motion — only with motion allowed
+   ===================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  .demo-svg * { transform-box: fill-box; }
+
+  /* hero: 12 s loop */
+  .hero-stage .demo-svg > * { animation-duration: 12s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(0.45, 0, 0.25, 1); animation-fill-mode: both; }
+  .h-cursor { transform-box: view-box !important; animation-name: h-cursor; }
+  .h-finger { transform-box: view-box !important; animation-name: h-finger; }
+  .h-finger .f-ripple { transform-origin: center; animation: h-ripple 12s infinite both; }
+  .h-trackpad { animation-name: h-trackpad; }
+  .h-macwin { transform-origin: 50% 50%; animation-name: h-macwin; }
+  .h-dockdot { animation-name: h-dockdot; }
+  .h-ghost { transform-origin: 0 0; animation-name: h-ghost; }
+  .h-phonewin { transform-origin: 50% 0; animation-name: h-phonewin; }
+  .demo-steps li { animation: 12s infinite both; }
+  .demo-steps li:nth-child(1) { animation-name: cap-1; }
+  .demo-steps li:nth-child(2) { animation-name: cap-2; }
+
+  @keyframes h-cursor {
+    0% { transform: translate(470px, 250px); }
+    20%, 25% { transform: translate(318px, 362px); }
+    32%, 100% { transform: translate(420px, 232px); }
+  }
+  @keyframes h-finger {
+    0% { transform: translate(800px, 215px); opacity: 0; }
+    3% { transform: translate(800px, 215px); opacity: 1; }
+    20%, 25% { transform: translate(738px, 300px); opacity: 1; }
+    32% { transform: translate(780px, 205px); opacity: 1; }
+    38%, 100% { transform: translate(780px, 205px); opacity: 0; }
+  }
+  @keyframes h-ripple {
+    0%, 21% { transform: scale(0.6); opacity: 0; }
+    22% { transform: scale(0.8); opacity: 0.9; }
+    29%, 100% { transform: scale(2.6); opacity: 0; }
+  }
+  @keyframes h-trackpad { 0%, 40% { opacity: 1; } 46%, 92% { opacity: 0; } 98%, 100% { opacity: 1; } }
+  @keyframes h-macwin {
+    0%, 24% { opacity: 0; transform: scale(0.88); }
+    32%, 90% { opacity: 1; transform: none; }
+    97%, 100% { opacity: 0; transform: scale(0.96); }
+  }
+  @keyframes h-dockdot { 0%, 25% { opacity: 0; } 28%, 92% { opacity: 1; } 98%, 100% { opacity: 0; } }
+  @keyframes h-ghost {
+    0%, 40% { opacity: 0; transform: none; }
+    42% { opacity: 1; transform: none; }
+    53% { opacity: 1; transform: translate(523px, -18px) scale(0.5394, 1.5981); }
+    58%, 100% { opacity: 0; transform: translate(523px, -18px) scale(0.5394, 1.5981); }
+  }
+  @keyframes h-phonewin {
+    0%, 51% { opacity: 0; transform: scale(0.96); }
+    57%, 90% { opacity: 1; transform: none; }
+    96%, 100% { opacity: 0; transform: none; }
+  }
+  @keyframes cap-1 { 0%, 40% { opacity: 1; } 46%, 94% { opacity: 0.38; } 100% { opacity: 1; } }
+  @keyframes cap-2 { 0%, 42% { opacity: 0.38; } 48%, 92% { opacity: 1; } 100% { opacity: 0.38; } }
+
+  /* window demo: 7 s */
+  .w-desk { animation: w-desk 7s infinite both; }
+  .w-lens { animation: w-lens 7s infinite both; }
+  .w-fit { transform-origin: 50% 50%; animation: w-fit 7s infinite both; }
+  [data-demo="window"] .chip { animation: 7s infinite both; }
+  [data-demo="window"] .chip:nth-child(1) { animation-name: chip-a; }
+  [data-demo="window"] .chip:nth-child(2) { animation-name: chip-b; }
+  @keyframes w-desk { 0%, 38% { opacity: 1; } 46%, 92% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes w-lens { 0%, 6% { opacity: 0; } 12%, 34% { opacity: 1; } 40%, 100% { opacity: 0; } }
+  @keyframes w-fit { 0%, 40% { opacity: 0; transform: scale(0.35); } 50%, 90% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+  @keyframes chip-a { 0%, 40% { background: var(--hi); color: var(--hi-ink); } 48%, 94% { background: var(--fill); color: var(--text-secondary); } 100% { background: var(--hi); color: var(--hi-ink); } }
+  @keyframes chip-b { 0%, 42% { background: var(--fill); color: var(--text-secondary); } 50%, 92% { background: var(--hi); color: var(--hi-ink); } 100% { background: var(--fill); color: var(--text-secondary); } }
+
+  /* multiple Macs: 8 s, staggered rows */
+  .m-row .m-dot, .m-row .m-off, .m-row .m-on, .m-row .m-btn, .m-row .m-btn-text { animation: 8s infinite both; }
+  .m-dot { animation-name: m-dot !important; }
+  .m-off { animation-name: m-off !important; }
+  .m-on { animation-name: m-on !important; }
+  .m-btn { animation-name: m-btn !important; }
+  .m-btn-text { animation-name: m-btn-text !important; }
+  .m-row-1 * { animation-delay: 0.7s !important; }
+  .m-row-2 * { animation-delay: 1.4s !important; }
+  @keyframes m-dot { 0%, 12% { fill: var(--line-strong); } 18%, 88% { fill: var(--live); } 96%, 100% { fill: var(--line-strong); } }
+  @keyframes m-off { 0%, 12% { opacity: 1; } 18%, 88% { opacity: 0; } 96%, 100% { opacity: 1; } }
+  @keyframes m-on { 0%, 12% { opacity: 0; } 18%, 88% { opacity: 1; } 96%, 100% { opacity: 0; } }
+  @keyframes m-btn { 0%, 12% { fill: var(--fill); } 18%, 88% { fill: var(--action); } 96%, 100% { fill: var(--fill); } }
+  @keyframes m-btn-text { 0%, 12% { fill: var(--text-secondary); } 18%, 88% { fill: var(--on-action); } 96%, 100% { fill: var(--text-secondary); } }
+
+  /* away from home: 8 s + packet flow */
+  .r-lan, .r-loc-home { animation: r-a 8s infinite both; }
+  .r-ts, .r-loc-away { animation: r-b 8s infinite both; }
+  .r-phone { animation: r-phone 8s infinite both; }
+  .r-pkt { animation: r-pkt 1.8s linear infinite both; }
+  .r-pkt-1 { animation-delay: 0.6s; } .r-pkt-2 { animation-delay: 1.2s; }
+  .r-pkt-back { animation: r-pkt-back 1.8s linear infinite both; }
+  .r-pkt-back-1 { animation-delay: 0.9s; }
+  @keyframes r-a { 0%, 40% { opacity: 1; } 48%, 92% { opacity: 0; } 100% { opacity: 1; } }
+  @keyframes r-b { 0%, 42% { opacity: 0; } 50%, 90% { opacity: 1; } 98%, 100% { opacity: 0; } }
+  @keyframes r-phone { 0%, 40% { transform: none; } 50%, 90% { transform: translateY(18px); } 100% { transform: none; } }
+  @keyframes r-pkt { 0% { transform: translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateX(144px); opacity: 0; } }
+  @keyframes r-pkt-back { 0% { transform: translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateX(-144px); opacity: 0; } }
+
+  /* input: 9 s */
+  .i-cover { animation: i-cover 9s infinite both; }
+  .i-caret { animation: i-caret 0.9s steps(1) infinite; }
+  .i-seg-hi { animation: i-seg 9s infinite both; }
+  .i-key-0-3, .i-key-1-5, .i-key-0-7, .i-key-1-2, .i-key-2-4, .i-key-0-1 { animation: i-key 9s infinite both; }
+  .i-key-1-5 { animation-delay: 0.35s; } .i-key-0-7 { animation-delay: 0.7s; } .i-key-1-2 { animation-delay: 1.05s; }
+  .i-key-2-4 { animation-delay: 1.4s; } .i-key-0-1 { animation-delay: 1.75s; }
+  @keyframes i-cover {
+    0% { transform: none; opacity: 1; }
+    4% { transform: none; opacity: 1; animation-timing-function: steps(8, end); }
+    30% { transform: translateX(240px); opacity: 1; }
+    86% { transform: translateX(240px); opacity: 1; }
+    92%, 100% { transform: none; opacity: 1; }
+  }
+  @keyframes i-caret { 50% { opacity: 0; } }
+  @keyframes i-seg { 0%, 36% { transform: none; } 42%, 64% { transform: translateX(112px); } 70%, 94% { transform: translateX(224px); } 100% { transform: none; } }
+  @keyframes i-key { 0%, 3% { fill: var(--win); } 4%, 6% { fill: var(--hi); } 8%, 100% { fill: var(--win); } }
+
+  /* privacy flow */
+  .p-link { animation: p-flow 1.2s linear infinite; }
+  @keyframes p-flow { to { stroke-dashoffset: -20; } }
+
+  /* pause demos that are off-screen (JS toggles .is-playing) */
+  .js [data-demo]:not(.is-playing) * { animation-play-state: paused !important; }
+}
+.dl-bar { visibility: hidden; }
+.dl-bar.is-shown { visibility: visible; }
+.dl-bar { transition: transform 420ms var(--ease-out), opacity 300ms var(--ease-out), visibility 0s linear 420ms; }
+.dl-bar.is-shown { transition: transform 420ms var(--ease-out), opacity 300ms var(--ease-out), visibility 0s; }
+.flow::before, .flow::after { z-index: 0; }
+.flow > li { z-index: 1; }
+@media (min-width: 840px) { .flow::before, .flow::after { right: calc(33.333% - 39px); } }
+.f-row { fill: var(--canvas); }
+.lang-switch .short { display: none; }
+@media (max-width: 599.98px) {
+  .lang-switch .long { display: none; }
+  .lang-switch .short { display: inline; }
+  .lang-switch { padding: 0 var(--space-m); min-height: 36px; }
+  .header-dl { padding: 0 var(--space-m); }
+  .hero2 { padding-top: 32px; }
+  .hero2 .lead { font-size: 1.0625rem; }
+  .hero2 .actions { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
+  .demo-steps { flex-direction: column; align-items: flex-start; max-width: 320px; margin-left: auto; margin-right: auto; text-align: left; }
+  .demo-steps li { align-items: flex-start; }
+  .demo-steps b { flex: none; margin-top: 2px; }
+  .values { padding-top: 8px; }
+}
+.privacy2 .f-sub { font-size: 21px; }
+.privacy2 .f-strong { font-size: 22px; }
+@media (prefers-reduced-motion: reduce) {
+  .js .flow::after { transform: none !important; transition: none; }
+  .js .flow:not(.is-in) > li::before { background: var(--action); color: var(--on-action); }
+  .dl-bar, .btn { transition: none; }
+}

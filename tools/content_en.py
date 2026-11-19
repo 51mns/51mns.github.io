@@ -5,73 +5,125 @@ from __future__ import annotations
 import components as c
 import site_config as cfg
 import legal_en
+import demos
 
 HOST = cfg.MAC_APP_NAME
 
 
 def home() -> dict:
     body = f"""
-<section class="hero">
-<div class="wrap hero-grid">
-<div>
-{c.app_icon("Remones app icon")}
-<p class="eyebrow">Remote desktop for iPhone and iPad</p>
-<h1>Your Mac, right in your hand.</h1>
-<p class="lead">Remones lets you control your own Mac from an iPhone or iPad. Don’t just watch the screen — work in your Mac apps with a keyboard and trackpad, the way you normally would.</p>
+<section class="hero2" data-hero aria-labelledby="hero-title">
+<div class="wrap">
+<p class="eyebrow">{c.picture("assets/img/icon-standard-128.webp", "assets/img/icon-standard-128-dark.webp", "", 128, 128, lazy=False)}Remote desktop for iPhone and iPad</p>
+<h1 id="hero-title" class="display">Your iPhone becomes your Mac.</h1>
+<p class="lead">Not just a mirrored screen. Remones fits a Mac app’s window to your iPhone, so you can work the way you always do — with your fingers or a keyboard. No servers, no account.</p>
 <div class="actions">
 {c.app_store_button("en")}
-<a class="btn btn-secondary" href="~/mac/">{c.icon("laptop")}Get the Mac app</a>
+<a class="btn btn-primary" href="~/mac/">{c.icon("laptop")}Get the Mac app</a>
 </div>
-<p class="fineprint">Requires iOS / iPadOS {cfg.MIN_IOS} or later. The Mac you control (macOS {cfg.MIN_MACOS} or later) runs the companion Mac app, {HOST}.</p>
-</div>
-<div class="hero-shot">
-{c.home_screenshot("en", "Home screen (development build, Japanese UI)", "The Remones Home screen. Two saved Macs are shown as online, each with an Open button. Below are the app list and an All Windows button.")}
+<p class="fineprint">For iPhone and iPad (iOS / iPadOS {cfg.MIN_IOS} or later) with a Mac (macOS {cfg.MIN_MACOS} or later).</p>
+<div class="hero-stage" data-demo="hero">
+{demos.hero("en")}
+<ol class="demo-steps">
+<li><b>1</b>Move your finger and the Mac’s cursor follows</li>
+<li><b>2</b>The window you open fits your iPhone screen</li>
+</ol>
 </div>
 </div>
 </section>
 
-<section class="section" id="features" aria-labelledby="features-title">
+<div class="values" id="features">
+<div class="wrap">
+
+<section class="value" aria-labelledby="v1-title">
+<div class="value-text">
+<span class="kicker">Fit Window</span>
+<h2 id="v1-title" class="display">Readable. No pinching.</h2>
+<p class="lead">Shrink a big Mac screen onto a phone and the text becomes unreadable. Pick one Mac app in Remones and its window is fitted to your iPhone or iPad screen.</p>
+<ul class="ticks">
+<li>Adjust the text size to taste.</li>
+<li>Switch to Desktop when you want the whole screen.</li>
+</ul>
+</div>
+<div class="stage" data-demo="window">
+{demos.window_demo("en")}
+<div class="stage-caption" aria-hidden="true"><span class="chip">Desktop</span><span class="chip">Fit Window</span></div>
+</div>
+</section>
+
+<section class="value" aria-labelledby="v2-title">
+<div class="value-text">
+<span class="kicker">Multiple Macs</span>
+<h2 id="v2-title" class="display">Every Mac, on one Home.</h2>
+<p class="lead">Your home Mac and your work Mac, side by side. Home shows which ones are online before you open them.</p>
+<ul class="ticks">
+<li>While waiting, only status is checked — no screen is sent until you tap Open.</li>
+<li>Apps from a Mac you’ve connected to stay on Home even when it’s offline.</li>
+<li>The Shelf takes you to other windows and Macs in a moment.</li>
+</ul>
+</div>
+<div class="stage" data-demo="macs">
+{demos.macs_demo("en")}
+</div>
+</section>
+
+<section class="value" aria-labelledby="v3-title">
+<div class="value-text">
+<span class="kicker">Away from home</span>
+<h2 id="v3-title" class="display">Away from home. No port forwarding.</h2>
+<p class="lead">Same Wi-Fi at home, Tailscale when you’re out. Remones picks a route that works from the addresses your iPhone has learned.</p>
+<ul class="ticks">
+<li>No router port forwarding.</li>
+<li>No Remones server, no account. Your screen never passes through our servers.</li>
+</ul>
+<p><a href="~/tailscale/">Using Remones with Tailscale</a></p>
+</div>
+<div class="stage" data-demo="remote">
+{demos.remote_demo("en")}
+</div>
+</section>
+
+<section class="value" aria-labelledby="v4-title">
+<div class="value-text">
+<span class="kicker">Input and Audio</span>
+<h2 id="v4-title" class="display">Fingers or keyboard.</h2>
+<p class="lead">Move the pointer like a trackpad, or touch the screen directly. Choose the input mode that suits what you’re doing.</p>
+<ul class="ticks">
+<li>Type with the iPhone keyboard — Japanese input included.</li>
+<li>Paste text you copied on your iPhone into the Mac.</li>
+<li>Haptic feedback as you control the Mac.</li>
+<li>Hear your Mac on your iPhone (Audio), with Picture in Picture.</li>
+</ul>
+</div>
+<div class="stage" data-demo="input">
+{demos.input_demo("en")}
+</div>
+</section>
+
+</div>
+</div>
+
+<section class="section" id="how" aria-labelledby="how-title">
 <div class="wrap">
 <div class="section-head">
-<span class="eyebrow">Features</span>
-<h2 id="features-title">Your Mac work, in the palm of your hand</h2>
-<p class="lead">More than a mirrored screen. Open individual apps and windows so they stay usable on a small display.</p>
+<span class="eyebrow">Get started</span>
+<h2 id="how-title" class="display">Three steps to get going.</h2>
 </div>
-<div class="grid grid-3">
-<article class="card feature"><div class="glyph">{c.icon("display")}</div><h3>Desktop — the whole Mac screen</h3><p>See and control your Mac’s entire desktop. Zoom in when you need to see the details.</p></article>
-<article class="card feature"><div class="glyph">{c.icon("window")}</div><h3>Fit Window</h3><p>Pick one Mac app and Remones fits its window to your iPhone or iPad screen. You can adjust the text size too.</p></article>
-<article class="card feature"><div class="glyph">{c.icon("macs")}</div><h3>All your Macs on one Home</h3><p>Keep your home Mac and your work Mac side by side and switch between them. Apps from a Mac you’ve connected to stay on Home even while it’s offline.</p></article>
-<article class="card feature"><div class="glyph">{c.icon("shelf")}</div><h3>Switch fast with the Shelf</h3><p>The Shelf gathers open windows, apps and your other Macs, so you can jump from the current screen to another window in a moment.</p></article>
-<article class="card feature"><div class="glyph">{c.icon("keyboard")}</div><h3>Input — typing and paste</h3><p>Keyboard and trackpad input are supported. Text you copy on your iPhone can be pasted on the Mac from Input in the session menu.</p></article>
-<article class="card feature"><div class="glyph">{c.icon("audio")}</div><h3>Audio and Picture in Picture</h3><p>Play your Mac’s sound on your iPhone. With Picture in Picture, keep an eye on your Mac while using other apps.</p></article>
-<article class="card feature"><div class="glyph">{c.icon("search")}</div><h3>Search windows and files</h3><p>Search windows, apps, workspaces and computers. If you allow it on the Mac, you can search file names on the Mac too.</p></article>
-<article class="card feature"><div class="glyph">{c.icon("globe")}</div><h3>Away from home</h3><p>With a VPN such as Tailscale, connect the same way from outside your home network. <a class="more" href="~/tailscale/">See how</a></p></article>
-<article class="card feature"><div class="glyph">{c.icon("lock")}</div><h3>Pairing you can verify</h3><p>The first time you connect, compare the code shown on your iPhone and your Mac, then approve on the Mac. Connections are encrypted.</p></article>
-</div>
+<ol class="flow" data-reveal>
+<li><h3>Install Remones on your iPhone</h3><p>Remones for iPhone and iPad is coming soon to the App Store.</p></li>
+<li><h3>Install the Mac app</h3><p>Install {HOST} on the Mac you want to control and allow Screen Recording and Accessibility.</p><a href="~/mac/">About the Mac app</a></li>
+<li><h3>Pair, then open</h3><p>Choose your Mac on the iPhone, check the code and approve on the Mac. Then just tap Open.</p><a href="~/setup/">Setup guide</a></li>
+</ol>
 </div>
 </section>
 
-<section class="section" id="screens" aria-labelledby="screens-title">
-<div class="wrap">
-<div class="section-head">
-<span class="eyebrow">Screens</span>
-<h2 id="screens-title">Calm, monochrome by default</h2>
-<p class="lead">Remones follows the light and dark appearance of your iPhone and iPad — and so does this page.</p>
-</div>
-<div class="screens">
-<figure class="device">{c.picture("assets/img/screen-home-light.webp", "assets/img/screen-home-light.webp", "Home screen in light mode with the computer list and app list.", 600, 856)}<figcaption>Light</figcaption></figure>
-<figure class="device">{c.picture("assets/img/screen-home-dark.webp", "assets/img/screen-home-dark.webp", "Home screen in dark mode with the computer list and app list.", 600, 856)}<figcaption>Dark</figcaption></figure>
-</div>
-<p class="fineprint" style="margin-top:72px">Screenshots were taken from a development build in the Simulator with the Japanese interface. The released app may differ.</p>
-</div>
-</section>
-
-<section class="section" id="privacy" aria-labelledby="privacy-title">
+<section class="section privacy2" id="privacy" aria-labelledby="privacy-title">
 <div class="wrap">
 <div class="band">
 <span class="eyebrow">Privacy</span>
-<h2 id="privacy-title">Nothing in between but your own network</h2>
-<p class="lead" style="max-width:40rem">Remones has no developer-run relay servers and no accounts. Your iPhone and your Mac connect directly.</p>
+<h2 id="privacy-title" class="display">Nothing in between but your own network.</h2>
+<p class="lead" style="max-width:40rem">Remones has no relay servers — so there’s no way for us to see your screen.</p>
+{demos.privacy_diagram("en")}
 <div class="grid">
 <div class="point"><h3>Direct connection</h3><p>Traffic goes over your local network or a VPN you set up. Screen, audio and input never pass through Remones servers.</p></div>
 <div class="point"><h3>No account</h3><p>There is no Remones account to create, and no email address to give.</p></div>
@@ -88,7 +140,7 @@ def home() -> dict:
 <div class="card" style="padding:32px">
 {c.accent_strip()}
 <span class="eyebrow">Remones Plus</span>
-<h2 id="plus-title">An icon in your colour</h2>
+<h2 id="plus-title" class="display">An icon in your colour.</h2>
 <p class="lead" style="max-width:40rem">Remones Plus is a subscription that lets you choose the app icon and the matching in-app accent colour. Standard and Lemon are free.</p>
 {c.icon_row("en")}
 <p class="fineprint">Remones Plus is optional. Prices and free-trial terms are shown on the App Store and in the app’s purchase screen.</p>
@@ -96,26 +148,11 @@ def home() -> dict:
 </div>
 </section>
 
-<section class="section" id="start" aria-labelledby="start-title">
+<section class="section final-dl" id="download" data-final-download aria-labelledby="download-title">
 <div class="wrap">
-<div class="section-head">
-<span class="eyebrow">Get started</span>
-<h2 id="start-title">Up and running in three steps</h2>
-</div>
-<ol class="compact-steps">
-<li class="card"><h3>Install the Mac app</h3><p>Install {HOST} on the Mac you want to control.</p><a href="~/mac/">About the Mac app</a></li>
-<li class="card"><h3>Allow permissions on the Mac</h3><p>Allow Screen Recording to share the screen, and Accessibility to control the Mac.</p><a href="~/mac/#permissions">About permissions</a></li>
-<li class="card"><h3>Add it on your iPhone and approve</h3><p>Choose your Mac in Remones, check the code, and approve on the Mac.</p><a href="~/setup/">Setup guide</a></li>
-</ol>
-</div>
-</section>
-
-<section class="section" id="get" aria-labelledby="get-title">
-<div class="wrap">
-<div class="section-head">
-<span class="eyebrow">Download</span>
-<h2 id="get-title">All you need: an iPhone or iPad, and a Mac</h2>
-</div>
+{c.app_icon("Remones app icon", "icon-big")}
+<h2 id="download-title" class="display">Get started with Remones.</h2>
+<p class="lead" style="max-width:36rem;margin:0 auto">One app for your iPhone or iPad, one for your Mac. That’s all you need.</p>
 {platform_list()}
 </div>
 </section>
@@ -123,10 +160,11 @@ def home() -> dict:
     return {
         "slug": "",
         "nav": "home",
-        "title": "Remones — Control your Mac from iPhone and iPad",
+        "dl_bar": True,
+        "title": "Remones — Your iPhone becomes your Mac.",
         "title_is_full": True,
-        "description": "Remones is a remote desktop app for controlling your own Mac from iPhone and iPad. Fit Window, multiple Macs and access from away via Tailscale. No relay servers, no account.",
-        "og_alt": "The Remones icon and the line “Your Mac, right in your hand.”",
+        "description": "Remones is a remote desktop app for controlling your own Mac from iPhone and iPad. Windows fitted to your screen, all your Macs on one Home, and access from away via Tailscale. No relay servers, no account.",
+        "og_alt": "The Remones icon and the line “Your iPhone becomes your Mac.”",
         "body": body,
     }
 
@@ -143,7 +181,7 @@ def platform_list() -> str:
 <div class="meta">{c.icon("laptop")}<div><h3>Mac ({HOST})</h3><span class="badge badge-soon">In preparation</span></div></div>
 <p>The companion app for the Mac you control. It accepts connections from your iPhone or iPad and streams the screen and sound.</p>
 <dl><dt>Requires</dt><dd>macOS {cfg.MIN_MACOS} or later</dd><dt>Available on</dt><dd>GitHub Releases</dd></dl>
-<div class="actions"><a class="btn btn-secondary" href="~/mac/">Details and installation</a></div>
+<div class="actions"><a class="btn btn-primary" href="~/mac/">{c.icon("laptop")}Get the Mac app</a></div>
 </li>
 </ul>"""
 
@@ -160,7 +198,7 @@ def download() -> dict:
 <p class="fineprint" style="margin-top:24px">When more platforms are supported, they will be added to this page.</p>
 </div>
 """
-    return {"slug": "download", "nav": "download", "title": "Download",
+    return {"slug": "download", "nav": None, "title": "Download",
             "description": f"Where to get Remones for iPhone and iPad and the companion Mac app ({HOST}), with system requirements.",
             "body": body}
 
@@ -257,7 +295,7 @@ def mac() -> dict:
 </div>
 </div>
 """
-    return {"slug": "mac", "nav": "download", "title": f"Mac app ({HOST})",
+    return {"slug": "mac", "nav": "mac", "title": f"Mac app ({HOST})",
             "description": f"Requirements, installation, Screen Recording and Accessibility permissions, pairing, updating and troubleshooting for {HOST}, the Remones Mac app.",
             "body": body}
 

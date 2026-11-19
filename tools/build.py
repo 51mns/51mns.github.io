@@ -35,13 +35,17 @@ UI = {
         "skip": "本文へ移動",
         "nav_label": "メインメニュー",
         "nav": [("features", "機能", "~/#features"), ("setup", "はじめかた", "~/setup/"),
-                ("download", "ダウンロード", "~/download/"), ("support", "サポート", "~/support/")],
+                ("mac", "Mac アプリ", "~/mac/"), ("support", "サポート", "~/support/")],
+        "dl": "ダウンロード",
+        "bar_label": "ダウンロード",
+        "bar_mac": "Mac アプリ",
         "switch_label": "English",
         "switch_hreflang": "en",
         "switch_aria": "English version",
-        "footer_tagline": "iPhone・iPad から、自分の Mac を。",
+        "switch_short": "EN",
+        "footer_tagline": "iPhone が、あなたの Mac になる。",
         "footer_cols": [
-            ("製品", [("機能", "~/#features"), ("画面", "~/#screens"), ("Remones Plus", "~/#plus"), ("ダウンロード", "~/download/")]),
+            ("製品", [("機能", "~/#features"), ("はじめかた", "~/#how"), ("Remones Plus", "~/#plus"), ("ダウンロード", "~/download/")]),
             ("ガイド", [("はじめかた", "~/setup/"), ("Mac アプリ", "~/mac/"), ("外出先から使う", "~/tailscale/"), ("サポート", "~/support/")]),
             ("規約", [("プライバシーポリシー", "~/privacy/"), ("利用条件", "~/terms/")]),
         ],
@@ -54,13 +58,17 @@ UI = {
         "skip": "Skip to content",
         "nav_label": "Main",
         "nav": [("features", "Features", "~/#features"), ("setup", "Get started", "~/setup/"),
-                ("download", "Download", "~/download/"), ("support", "Support", "~/support/")],
+                ("mac", "Mac app", "~/mac/"), ("support", "Support", "~/support/")],
+        "dl": "Download",
+        "bar_label": "Download",
+        "bar_mac": "Mac app",
         "switch_label": "日本語",
         "switch_hreflang": "ja",
         "switch_aria": "日本語版",
-        "footer_tagline": "Your Mac, from your iPhone and iPad.",
+        "switch_short": "JA",
+        "footer_tagline": "Your iPhone becomes your Mac.",
         "footer_cols": [
-            ("Product", [("Features", "~/#features"), ("Screens", "~/#screens"), ("Remones Plus", "~/#plus"), ("Download", "~/download/")]),
+            ("Product", [("Features", "~/#features"), ("How it works", "~/#how"), ("Remones Plus", "~/#plus"), ("Download", "~/download/")]),
             ("Guides", [("Get started", "~/setup/"), ("Mac app", "~/mac/"), ("Use it away from home", "~/tailscale/"), ("Support", "~/support/")]),
             ("Legal", [("Privacy Policy", "~/privacy/"), ("Terms of Use", "~/terms/")]),
         ],
@@ -119,6 +127,14 @@ def render(page: dict, lang: str) -> tuple[str, str]:
         nav_items.append(f'<li><a href="{href}"{current}>{label}</a></li>')
 
     robots = '\n<meta name="robots" content="noindex">' if page.get("noindex") else ""
+    dl_href = "#download" if page.get("dl_bar") else "~/download/"
+    body_class = ' class="has-dl-bar"' if page.get("dl_bar") else ""
+    dl_bar = ""
+    if page.get("dl_bar"):
+        dl_bar = (f'<aside class="dl-bar" aria-label="{ui["bar_label"]}">'
+                  f'<span class="brand-mini">{c.mark_svg()}<span>Remones</span></span>'
+                  f'{c.app_store_button(lang, compact=True)}'
+                  f'<a class="btn btn-secondary" href="~/mac/">{c.icon("laptop")}{ui["bar_mac"]}</a></aside>')
 
     footer_cols = "".join(
         f'<div><h2>{html.escape(h)}</h2><ul>' + "".join(f'<li><a href="{u}">{html.escape(t)}</a></li>' for t, u in links) + "</ul></div>"
@@ -143,6 +159,7 @@ def render(page: dict, lang: str) -> tuple[str, str]:
 <link rel="icon" href="^/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="^/apple-touch-icon.png">
 <link rel="stylesheet" href="^/assets/css/site.css">
+<script src="^/assets/js/site.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Remones">
 <meta property="og:title" content="{html.escape(full_title)}">
@@ -155,18 +172,20 @@ def render(page: dict, lang: str) -> tuple[str, str]:
 <meta property="og:locale" content="{ui['og_locale']}">
 <meta name="twitter:card" content="summary_large_image">
 </head>
-<body>
+<body{body_class}>
 <a class="skip-link" href="#main">{ui['skip']}</a>
 <header class="site-header">
 <div class="wrap">
 <a class="brand" href="~/">{c.mark_svg()}<span>Remones</span></a>
 <nav class="site-nav" aria-label="{ui['nav_label']}"><ul>{''.join(nav_items)}</ul></nav>
-<a class="lang-switch" href="{'^/en/' if lang == 'ja' else '^/'}{slug + '/' if slug else ''}" hreflang="{ui['switch_hreflang']}" lang="{other}" aria-label="{ui['switch_aria']}">{ui['switch_label']}</a>
+<a class="btn btn-primary header-dl" href="{dl_href}">{c.icon("download")}{ui['dl']}</a>
+<a class="lang-switch" href="{'^/en/' if lang == 'ja' else '^/'}{slug + '/' if slug else ''}" hreflang="{ui['switch_hreflang']}" lang="{other}" aria-label="{ui['switch_aria']}"><span class="long">{ui['switch_label']}</span><span class="short" aria-hidden="true">{ui['switch_short']}</span></a>
 </div>
 </header>
 <main id="main">
 {page['body'].strip()}
 </main>
+{dl_bar}
 <footer class="site-footer">
 <div class="wrap">
 <div class="footer-grid">

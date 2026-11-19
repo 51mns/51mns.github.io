@@ -44,11 +44,15 @@ def icon(name: str) -> str:
     return f'<svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false">{_ICONS[name]}</svg>'
 
 
-def app_store_button(lang: str) -> str:
+def app_store_button(lang: str, compact: bool = False) -> str:
     if cfg.APP_STORE_URL:
         label = "App Store で入手" if lang == "ja" else "Download on the App Store"
+        if compact:
+            label = "App Store"
         return f'<a class="btn btn-primary" href="{html.escape(cfg.APP_STORE_URL)}">{icon("phone")}{label}</a>'
     label = "App Store で近日公開" if lang == "ja" else "Coming soon on the App Store"
+    if compact:
+        label = "App Store 近日公開" if lang == "ja" else "App Store · soon"
     note = "まだ公開されていません" if lang == "ja" else "not yet available"
     return (f'<span class="btn btn-soon" role="link" aria-disabled="true">{icon("phone")}{label}'
             f'<span class="visually-hidden">（{note}）</span></span>')
@@ -103,8 +107,3 @@ def icon_row(lang: str) -> str:
 def accent_strip() -> str:
     spans = "".join(f'<span style="background:var(--accent-{k})"></span>' for k, *_ in ACCENTS if k != "standard")
     return f'<div class="accent-strip" aria-hidden="true">{spans}</div>'
-
-
-def home_screenshot(lang: str, caption: str, alt: str, lazy: bool = False) -> str:
-    img = picture("assets/img/screen-home-light.webp", "assets/img/screen-home-dark.webp", alt, 600, 856, lazy=lazy)
-    return f'<figure class="device">{img}<figcaption>{caption}</figcaption></figure>'

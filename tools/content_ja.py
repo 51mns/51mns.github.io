@@ -9,75 +9,127 @@ from __future__ import annotations
 import components as c
 import site_config as cfg
 import legal_ja
+import demos
 
 HOST = cfg.MAC_APP_NAME
 
 
 def home() -> dict:
     body = f"""
-<section class="hero">
-<div class="wrap hero-grid">
-<div>
-{c.app_icon("Remones のアプリアイコン")}
-<p class="eyebrow">iPhone・iPad 用リモートデスクトップ</p>
-<h1>手もとの iPhone で、<br>いつもの Mac を。</h1>
-<p class="lead">Remones は、iPhone や iPad から自分の Mac を操作するアプリです。画面を見るだけでなく、キーボードやトラックパッドを使って、Mac のアプリでそのまま作業できます。</p>
+<section class="hero2" data-hero aria-labelledby="hero-title">
+<div class="wrap">
+<p class="eyebrow">{c.picture("assets/img/icon-standard-128.webp", "assets/img/icon-standard-128-dark.webp", "", 128, 128, lazy=False)}iPhone・iPad 用リモートデスクトップ</p>
+<h1 id="hero-title" class="display">iPhone&nbsp;が、<wbr>あなたの&nbsp;Mac&nbsp;になる。</h1>
+<p class="lead">Mac の画面を映すだけではありません。アプリのウインドウを iPhone の画面にぴったり合わせて、指でもキーボードでも、いつもどおりに作業できます。サーバーもアカウントも使いません。</p>
 <div class="actions">
 {c.app_store_button("ja")}
-<a class="btn btn-secondary" href="~/mac/">{c.icon("laptop")}Mac アプリを入手</a>
+<a class="btn btn-primary" href="~/mac/">{c.icon("laptop")}Mac アプリを入手</a>
 </div>
-<p class="fineprint">iOS / iPadOS {cfg.MIN_IOS} 以降に対応。操作する Mac（macOS {cfg.MIN_MACOS} 以降）には、Mac アプリ「{HOST}」を入れて使います。</p>
-</div>
-<div class="hero-shot">
-{c.home_screenshot("ja", "Home 画面（開発中のビルド）", "Remones の Home 画面。登録した 2 台の Mac が「オンライン」と表示され、それぞれに「開く」ボタンがある。下にはアプリの一覧と「すべてのウインドウ」ボタン。")}
+<p class="fineprint">iPhone・iPad（iOS / iPadOS {cfg.MIN_IOS} 以降）と、Mac（macOS {cfg.MIN_MACOS} 以降）で使います。</p>
+<div class="hero-stage" data-demo="hero">
+{demos.hero("ja")}
+<ol class="demo-steps">
+<li><b>1</b>指で動かすと、Mac のカーソルが動く</li>
+<li><b>2</b>開いたウインドウが、iPhone の画面にぴったり収まる</li>
+</ol>
 </div>
 </div>
 </section>
 
-<section class="section" id="features" aria-labelledby="features-title">
+<div class="values" id="features">
+<div class="wrap">
+
+<section class="value" aria-labelledby="v1-title">
+<div class="value-text">
+<span class="kicker">ウインドウ表示</span>
+<h2 id="v1-title" class="display">ピンチしなくても、<wbr>読める。</h2>
+<p class="lead">Mac の大きな画面を小さく映すと、文字は読めません。Remones は Mac のアプリをひとつ選ぶと、そのウインドウを iPhone や iPad の画面サイズに合わせて表示します。</p>
+<ul class="ticks">
+<li>文字の大きさも調整できます。</li>
+<li>デスクトップ全体を見たいときは Desktop に切り替え。</li>
+</ul>
+</div>
+<div class="stage" data-demo="window">
+{demos.window_demo("ja")}
+<div class="stage-caption" aria-hidden="true"><span class="chip">Desktop</span><span class="chip">ウインドウ表示</span></div>
+</div>
+</section>
+
+<section class="value" aria-labelledby="v2-title">
+<div class="value-text">
+<span class="kicker">複数の Mac</span>
+<h2 id="v2-title" class="display">すべての Mac が、<wbr>ひとつの Home に。</h2>
+<p class="lead">自宅の Mac も、仕事の Mac も。Home に並べて、開く前からオンラインかどうかが分かります。</p>
+<ul class="ticks">
+<li>待機中は状態だけを確認。「開く」まで画面は送られません。</li>
+<li>一度つないだ Mac のアプリは、オフラインでも Home に残ります。</li>
+<li>シェルフから、ほかのウインドウや Mac へすぐ移れます。</li>
+</ul>
+</div>
+<div class="stage" data-demo="macs">
+{demos.macs_demo("ja")}
+</div>
+</section>
+
+<section class="value" aria-labelledby="v3-title">
+<div class="value-text">
+<span class="kicker">外出先から</span>
+<h2 id="v3-title" class="display">家の外でも。<wbr>ポート開放なしで。</h2>
+<p class="lead">家では同じ Wi-Fi で、外出先では Tailscale で。iPhone が覚えた経路から、つながる道を自動で選びます。</p>
+<ul class="ticks">
+<li>ルーターのポート開放は不要です。</li>
+<li>Remones のサーバーもアカウントもありません。画面が私たちのサーバーを通ることはありません。</li>
+</ul>
+<p><a href="~/tailscale/">Tailscale での使い方</a></p>
+</div>
+<div class="stage" data-demo="remote">
+{demos.remote_demo("ja")}
+</div>
+</section>
+
+<section class="value" aria-labelledby="v4-title">
+<div class="value-text">
+<span class="kicker">Input と Audio</span>
+<h2 id="v4-title" class="display">指でも、<wbr>キーボードでも。</h2>
+<p class="lead">トラックパッドのように動かすか、画面を直接タッチするか。使い方に合わせて入力モードを選べます。</p>
+<ul class="ticks">
+<li>iPhone のキーボードで、日本語もそのまま入力。</li>
+<li>iPhone でコピーしたテキストを Mac にペースト。</li>
+<li>操作に合わせた触覚フィードバック。</li>
+<li>Mac の音声を iPhone で再生（Audio）。ピクチャ・イン・ピクチャにも対応。</li>
+</ul>
+</div>
+<div class="stage" data-demo="input">
+{demos.input_demo("ja")}
+</div>
+</section>
+
+</div>
+</div>
+
+<section class="section" id="how" aria-labelledby="how-title">
 <div class="wrap">
 <div class="section-head">
-<span class="eyebrow">できること</span>
-<h2 id="features-title">Mac の作業を、そのまま手のひらに</h2>
-<p class="lead">画面全体を映すだけのリモートデスクトップではありません。アプリやウインドウ単位で開いて、小さな画面でも作業しやすくしています。</p>
+<span class="eyebrow">はじめかた</span>
+<h2 id="how-title" class="display">3 ステップで、<wbr>はじめられます。</h2>
 </div>
-<div class="grid grid-3">
-<article class="card feature"><div class="glyph">{c.icon("display")}</div><h3><span class="ui">Desktop</span> — Mac の画面をそのまま</h3><p>Mac のデスクトップ全体を表示して操作します。拡大して細かい部分を見ることもできます。</p></article>
-<article class="card feature"><div class="glyph">{c.icon("window")}</div><h3>ウインドウ表示</h3><p>Mac のアプリをひとつ選ぶと、そのウインドウを iPhone や iPad の画面サイズに合わせて表示します。文字の大きさも調整できます。</p></article>
-<article class="card feature"><div class="glyph">{c.icon("macs")}</div><h3>複数の Mac をひとつの Home に</h3><p>自宅の Mac も仕事の Mac も、Home に並べて切り替えられます。一度接続した Mac のアプリは、Mac がオフラインのときも Home に残ります。</p></article>
-<article class="card feature"><div class="glyph">{c.icon("shelf")}</div><h3>シェルフですばやく切り替え</h3><p>開いているウインドウ、アプリ、ほかの Mac をシェルフにまとめて表示します。作業中の画面から、別のウインドウへすぐ移れます。</p></article>
-<article class="card feature"><div class="glyph">{c.icon("keyboard")}</div><h3><span class="ui">Input</span> — 入力とペースト</h3><p>キーボードとトラックパッド操作に対応。iPhone でコピーしたテキストは、セッションメニューの Input から Mac にペーストできます。</p></article>
-<article class="card feature"><div class="glyph">{c.icon("audio")}</div><h3><span class="ui">Audio</span> とピクチャ・イン・ピクチャ</h3><p>Mac の音声を iPhone で再生できます。ピクチャ・イン・ピクチャを使えば、ほかのアプリを使いながら Mac の画面を確認できます。</p></article>
-<article class="card feature"><div class="glyph">{c.icon("search")}</div><h3>ウインドウもファイルも検索</h3><p>ウインドウ、アプリ、ワークスペース、コンピュータを検索。Mac 側で許可すると、Mac 内のファイル名も検索できます。</p></article>
-<article class="card feature"><div class="glyph">{c.icon("globe")}</div><h3>外出先からも</h3><p>Tailscale などの VPN を使えば、自宅の外からも同じように接続できます。<a class="more" href="~/tailscale/">使い方を見る</a></p></article>
-<article class="card feature"><div class="glyph">{c.icon("lock")}</div><h3>ペアリングで本人確認</h3><p>はじめて接続するときは、iPhone と Mac に表示されるコードを照らし合わせて、Mac で承認します。通信は暗号化されます。</p></article>
-</div>
+<ol class="flow" data-reveal>
+<li><h3>iPhone に Remones を入れる</h3><p>iPhone・iPad 用の Remones は App Store で近日公開です。</p></li>
+<li><h3>Mac に Mac アプリを入れる</h3><p>操作したい Mac に「{HOST}」を入れて、画面収録とアクセシビリティを許可します。</p><a href="~/mac/">Mac アプリについて</a></li>
+<li><h3>ペアリングして、開く</h3><p>iPhone で Mac を選び、表示されたコードを確かめて Mac で承認。あとは「開く」だけです。</p><a href="~/setup/">セットアップガイド</a></li>
+</ol>
 </div>
 </section>
 
-<section class="section" id="screens" aria-labelledby="screens-title">
-<div class="wrap">
-<div class="section-head">
-<span class="eyebrow">画面</span>
-<h2 id="screens-title">落ち着いた、モノトーンの画面</h2>
-<p class="lead">iPhone と iPad のライトモード・ダークモードに合わせて表示が切り替わります。このページも同じです。</p>
-</div>
-<div class="screens">
-<figure class="device">{c.picture("assets/img/screen-home-light.webp", "assets/img/screen-home-light.webp", "Home 画面（ライトモード）。コンピュータの一覧とアプリの一覧。", 600, 856)}<figcaption>ライトモード</figcaption></figure>
-<figure class="device">{c.picture("assets/img/screen-home-dark.webp", "assets/img/screen-home-dark.webp", "Home 画面（ダークモード）。コンピュータの一覧とアプリの一覧。", 600, 856)}<figcaption>ダークモード</figcaption></figure>
-</div>
-<p class="fineprint" style="margin-top:72px">画面は開発中のビルドをシミュレーターで撮影したものです。製品版では変わる場合があります。</p>
-</div>
-</section>
-
-<section class="section" id="privacy" aria-labelledby="privacy-title">
+<section class="section privacy2" id="privacy" aria-labelledby="privacy-title">
 <div class="wrap">
 <div class="band">
 <span class="eyebrow">プライバシー</span>
-<h2 id="privacy-title">あいだにあるのは、あなたのネットワークだけ</h2>
-<p class="lead" style="max-width:40rem">Remones には、開発者が運営する中継サーバーやアカウントがありません。iPhone と Mac は直接つながります。</p>
+<h2 id="privacy-title" class="display">あいだにあるのは、<wbr>あなたのネットワークだけ。</h2>
+<p class="lead" style="max-width:40rem">Remones には中継サーバーがありません。だから、あなたの画面を私たちが見ることはできません。</p>
+{demos.privacy_diagram("ja")}
 <div class="grid">
-<div class="point"><h3>直接つながる</h3><p>接続はローカルネットワーク、またはあなたが用意した VPN を通ります。画面・音声・入力が Remones のサーバーを経由することはありません。</p></div>
+<div class="point"><h3>直接つながる</h3><p>ローカルネットワーク、またはあなたが用意した VPN を通ります。画面・音声・入力が Remones のサーバーを経由することはありません。</p></div>
 <div class="point"><h3>アカウント不要</h3><p>Remones 独自のアカウント登録はありません。メールアドレスも求めません。</p></div>
 <div class="point"><h3>コードを照合して承認</h3><p>初回は両方の画面に出る 6 桁のコードを確かめ、Mac で承認します。通信は TLS で暗号化されます。</p></div>
 <div class="point"><h3>広告・解析なし</h3><p>広告や第三者の利用解析 SDK は組み込んでいません。ログも自動では送信しません。</p></div>
@@ -92,7 +144,7 @@ def home() -> dict:
 <div class="card" style="padding:32px">
 {c.accent_strip()}
 <span class="eyebrow">Remones Plus</span>
-<h2 id="plus-title">好きな色のアイコンで</h2>
+<h2 id="plus-title" class="display">好きな色の<wbr>アイコンで。</h2>
 <p class="lead" style="max-width:40rem">Remones Plus は、アプリアイコンとアプリ内のアクセントカラーを選べるサブスクリプションです。標準とレモンは無料で使えます。</p>
 {c.icon_row("ja")}
 <p class="fineprint">Remones Plus は任意です。価格や無料体験の条件は、App Store とアプリ内の購入画面に表示されます。</p>
@@ -100,26 +152,11 @@ def home() -> dict:
 </div>
 </section>
 
-<section class="section" id="start" aria-labelledby="start-title">
+<section class="section final-dl" id="download" data-final-download aria-labelledby="download-title">
 <div class="wrap">
-<div class="section-head">
-<span class="eyebrow">はじめかた</span>
-<h2 id="start-title">3 つのステップで使いはじめられます</h2>
-</div>
-<ol class="compact-steps">
-<li class="card"><h3>Mac アプリを入れる</h3><p>操作したい Mac に「{HOST}」をインストールします。</p><a href="~/mac/">Mac アプリについて</a></li>
-<li class="card"><h3>Mac で権限を許可</h3><p>画面を映すための「画面収録」と、操作のための「アクセシビリティ」を許可します。</p><a href="~/mac/#permissions">権限について</a></li>
-<li class="card"><h3>iPhone から追加して承認</h3><p>Remones で Mac を選び、表示されたコードを確かめて Mac で承認します。</p><a href="~/setup/">セットアップガイド</a></li>
-</ol>
-</div>
-</section>
-
-<section class="section" id="get" aria-labelledby="get-title">
-<div class="wrap">
-<div class="section-head">
-<span class="eyebrow">ダウンロード</span>
-<h2 id="get-title">必要なのは、iPhone か iPad と、Mac</h2>
-</div>
+{c.app_icon("Remones のアプリアイコン", "icon-big")}
+<h2 id="download-title" class="display">Remones を、<wbr>はじめよう。</h2>
+<p class="lead" style="max-width:36rem;margin:0 auto">iPhone・iPad のアプリと、Mac のアプリ。ふたつそろえば準備完了です。</p>
 {platform_list()}
 </div>
 </section>
@@ -127,10 +164,11 @@ def home() -> dict:
     return {
         "slug": "",
         "nav": "home",
-        "title": "Remones — iPhone・iPad から自分の Mac を操作",
+        "dl_bar": True,
+        "title": "Remones — iPhone が、あなたの Mac になる。",
         "title_is_full": True,
-        "description": "Remones は iPhone・iPad から自分の Mac を操作するリモートデスクトップアプリです。ウインドウ表示、複数の Mac、外出先からの接続に対応。中継サーバーやアカウントは不要です。",
-        "og_alt": "Remones のアイコンと「手もとの iPhone で、いつもの Mac を。」",
+        "description": "Remones は iPhone・iPad から自分の Mac を操作するリモートデスクトップアプリ。ウインドウを iPhone の画面に合わせて表示し、複数の Mac を Home で切り替え、外出先からも Tailscale で接続。中継サーバーやアカウントは不要です。",
+        "og_alt": "Remones のアイコンと「iPhone が、あなたの Mac になる。」",
         "body": body,
     }
 
@@ -147,7 +185,7 @@ def platform_list() -> str:
 <div class="meta">{c.icon("laptop")}<div><h3>Mac（{HOST}）</h3><span class="badge badge-soon">準備中</span></div></div>
 <p>操作される側の Mac に入れるアプリです。iPhone・iPad からの接続を受け付け、画面と音声を送ります。</p>
 <dl><dt>対応 OS</dt><dd>macOS {cfg.MIN_MACOS} 以降</dd><dt>配布</dt><dd>GitHub Releases</dd></dl>
-<div class="actions"><a class="btn btn-secondary" href="~/mac/">詳細とインストール方法</a></div>
+<div class="actions"><a class="btn btn-primary" href="~/mac/">{c.icon("laptop")}Mac アプリを入手</a></div>
 </li>
 </ul>"""
 
@@ -164,7 +202,7 @@ def download() -> dict:
 <p class="fineprint" style="margin-top:24px">対応するプラットフォームが増えたときは、このページに追加します。</p>
 </div>
 """
-    return {"slug": "download", "nav": "download", "title": "ダウンロード",
+    return {"slug": "download", "nav": None, "title": "ダウンロード",
             "description": "Remones の iPhone・iPad アプリと Mac アプリ（" + HOST + "）の入手先と対応 OS。",
             "body": body}
 
@@ -261,7 +299,7 @@ def mac() -> dict:
 </div>
 </div>
 """
-    return {"slug": "mac", "nav": "download", "title": f"Mac アプリ（{HOST}）",
+    return {"slug": "mac", "nav": "mac", "title": f"Mac アプリ（{HOST}）",
             "description": f"Remones の Mac アプリ「{HOST}」の動作環境、インストール、画面収録とアクセシビリティの許可、iPhone とのペアリング、アップデート、困ったときの対処。",
             "body": body}
 

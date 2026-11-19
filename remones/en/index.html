@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Remones — Control your Mac from iPhone and iPad</title>
-<meta name="description" content="Remones is a remote desktop app for controlling your own Mac from iPhone and iPad. Fit Window, multiple Macs and access from away via Tailscale. No relay servers, no account.">
+<title>Remones — Your iPhone becomes your Mac.</title>
+<meta name="description" content="Remones is a remote desktop app for controlling your own Mac from iPhone and iPad. Windows fitted to your screen, all your Macs on one Home, and access from away via Tailscale. No relay servers, no account.">
 <link rel="canonical" href="https://51mns.github.io/remones/en/">
 <link rel="alternate" hreflang="ja" href="https://51mns.github.io/remones/">
 <link rel="alternate" hreflang="en" href="https://51mns.github.io/remones/en/">
@@ -16,89 +16,225 @@
 <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Remones">
-<meta property="og:title" content="Remones — Control your Mac from iPhone and iPad">
-<meta property="og:description" content="Remones is a remote desktop app for controlling your own Mac from iPhone and iPad. Fit Window, multiple Macs and access from away via Tailscale. No relay servers, no account.">
+<meta property="og:title" content="Remones — Your iPhone becomes your Mac.">
+<meta property="og:description" content="Remones is a remote desktop app for controlling your own Mac from iPhone and iPad. Windows fitted to your screen, all your Macs on one Home, and access from away via Tailscale. No relay servers, no account.">
 <meta property="og:url" content="https://51mns.github.io/remones/en/">
 <meta property="og:image" content="https://51mns.github.io/remones/assets/img/og-en.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Remones icon and the line “Your Mac, right in your hand.”">
+<meta property="og:image:alt" content="The Remones icon and the line “Your iPhone becomes your Mac.”">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 </head>
-<body>
+<body class="has-dl-bar">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap">
 <a class="brand" href="../en/"><svg viewBox="200 210 640 640" aria-hidden="true" focusable="false"><path class="mark-base" fill-rule="evenodd" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L806.46 221.31 A18.43 18.43 0 0 1 824.89 239.75 L824.89 553.09 A61.44 61.44 0 0 1 763.45 614.53 L705.75 614.53 A12.29 12.29 0 0 0 697.06 635.51 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z M314.94 349.11 A33.79 33.79 0 0 1 348.73 315.32 L686.65 315.32 A33.79 33.79 0 0 1 720.44 349.11 L720.44 486.74 A33.79 33.79 0 0 1 686.65 520.53 L348.73 520.53 A33.79 33.79 0 0 1 314.94 486.74 Z"/><path class="mark-cursor" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L807.19 221.31 A17.69 17.69 0 0 1 824.89 239.01 L824.89 255.12 A7.37 7.37 0 0 1 822.73 260.34 L720.44 362.63 L720.44 338.03 A22.71 22.71 0 0 0 697.73 315.32 L348.73 315.32 A33.79 33.79 0 0 0 314.94 349.11 L314.94 486.74 A33.79 33.79 0 0 0 348.73 520.53 L579.03 520.53 A7.37 7.37 0 0 1 584.24 522.69 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z"/></svg><span>Remones</span></a>
-<nav class="site-nav" aria-label="Main"><ul><li><a href="../en/#features">Features</a></li><li><a href="../en/setup/">Get started</a></li><li><a href="../en/download/">Download</a></li><li><a href="../en/support/">Support</a></li></ul></nav>
-<a class="lang-switch" href="../" hreflang="ja" lang="ja" aria-label="日本語版">日本語</a>
+<nav class="site-nav" aria-label="Main"><ul><li><a href="../en/#features">Features</a></li><li><a href="../en/setup/">Get started</a></li><li><a href="../en/mac/">Mac app</a></li><li><a href="../en/support/">Support</a></li></ul></nav>
+<a class="btn btn-primary header-dl" href="#download"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/></svg>Download</a>
+<a class="lang-switch" href="../" hreflang="ja" lang="ja" aria-label="日本語版"><span class="long">日本語</span><span class="short" aria-hidden="true">JA</span></a>
 </div>
 </header>
 <main id="main">
-<section class="hero">
-<div class="wrap hero-grid">
-<div>
-<picture><source srcset="../assets/img/icon-256-dark.webp" media="(prefers-color-scheme: dark)"><img class="hero-icon" src="../assets/img/icon-256.webp" alt="Remones app icon" width="256" height="256" decoding="async"></picture>
-<p class="eyebrow">Remote desktop for iPhone and iPad</p>
-<h1>Your Mac, right in your hand.</h1>
-<p class="lead">Remones lets you control your own Mac from an iPhone or iPad. Don’t just watch the screen — work in your Mac apps with a keyboard and trackpad, the way you normally would.</p>
+<section class="hero2" data-hero aria-labelledby="hero-title">
+<div class="wrap">
+<p class="eyebrow"><picture><source srcset="../assets/img/icon-standard-128-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/icon-standard-128.webp" alt="" width="128" height="128" decoding="async"></picture>Remote desktop for iPhone and iPad</p>
+<h1 id="hero-title" class="display">Your iPhone becomes your Mac.</h1>
+<p class="lead">Not just a mirrored screen. Remones fits a Mac app’s window to your iPhone, so you can work the way you always do — with your fingers or a keyboard. No servers, no account.</p>
 <div class="actions">
 <span class="btn btn-soon" role="link" aria-disabled="true"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6.5" y="2.5" width="11" height="19" rx="2.8"/><path d="M10.5 18.5h3"/></svg>Coming soon on the App Store<span class="visually-hidden">（not yet available）</span></span>
-<a class="btn btn-secondary" href="../en/mac/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4.5" width="16" height="11" rx="1.6"/><path d="M2 19h20"/></svg>Get the Mac app</a>
+<a class="btn btn-primary" href="../en/mac/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4.5" width="16" height="11" rx="1.6"/><path d="M2 19h20"/></svg>Get the Mac app</a>
 </div>
-<p class="fineprint">Requires iOS / iPadOS 18 or later. The Mac you control (macOS 15 or later) runs the companion Mac app, Remones Host.</p>
-</div>
-<div class="hero-shot">
-<figure class="device"><picture><source srcset="../assets/img/screen-home-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/screen-home-light.webp" alt="The Remones Home screen. Two saved Macs are shown as online, each with an Open button. Below are the app list and an All Windows button." width="600" height="856" decoding="async"></picture><figcaption>Home screen (development build, Japanese UI)</figcaption></figure>
+<p class="fineprint">For iPhone and iPad (iOS / iPadOS 18 or later) with a Mac (macOS 15 or later).</p>
+<div class="hero-stage" data-demo="hero">
+<svg class="demo-svg" viewBox="0 0 880 470" role="img" aria-labelledby="hero-demo-title">
+<title id="hero-demo-title">Moving a finger on the iPhone moves the Mac’s cursor; the window it opens then fits the iPhone screen</title>
+<rect class="f-frame" x="20" y="20" width="600" height="388" rx="20"/>
+<rect class="f-desk" x="34" y="34" width="572" height="360" rx="8"/>
+<rect class="f-menubar" x="34" y="34" width="572" height="18" rx="8"/><rect class="f-menubar" x="34" y="44" width="572" height="8"/>
+<rect class="f-dock" x="224" y="350" width="192" height="38" rx="12"/>
+<rect class="f-dockicon" x="236" y="356" width="26" height="26" rx="7"/><rect class="f-dockicon" x="272" y="356" width="26" height="26" rx="7"/><rect class="f-dockicon f-dockicon-hi" x="308" y="356" width="26" height="26" rx="7"/><rect class="f-dockicon" x="344" y="356" width="26" height="26" rx="7"/><rect class="f-dockicon" x="380" y="356" width="26" height="26" rx="7"/>
+<circle class="f-run h-dockdot" cx="321" cy="386" r="2.2"/>
+<path class="f-stand" d="M282 408 h76 l10 38 h-96 z"/><rect class="f-stand" x="240" y="444" width="160" height="10" rx="5"/>
+<g class="h-macwin"><rect class="f-win" x="150" y="92" width="330" height="214" rx="10"/><rect class="f-titlebar" x="150" y="92" width="330" height="24" rx="10"/><rect class="f-titlebar" x="150" y="104" width="330" height="12"/><circle class="f-dot-r" cx="164" cy="104" r="4"/><circle class="f-dot-y" cx="177" cy="104" r="4"/><circle class="f-dot-g" cx="190" cy="104" r="4"/><rect class="f-line2" x="168" y="132.0" width="132.3" height="6" rx="3.0"/><rect class="f-line" x="168" y="149.0" width="279.3" height="6" rx="3.0"/><rect class="f-line" x="168" y="166.0" width="258.7" height="6" rx="3.0"/><rect class="f-line" x="168" y="183.0" width="270.5" height="6" rx="3.0"/><rect class="f-line" x="168" y="200.0" width="205.8" height="6" rx="3.0"/><rect class="f-line" x="168" y="217.0" width="264.6" height="6" rx="3.0"/><rect class="f-line" x="168" y="234.0" width="247.0" height="6" rx="3.0"/><rect class="f-line" x="168" y="251.0" width="147.0" height="6" rx="3.0"/><rect class="f-line" x="168" y="268.0" width="252.8" height="6" rx="3.0"/><rect class="f-line" x="168" y="285.0" width="176.4" height="6" rx="3.0"/></g>
+<g class="h-cursor" transform="translate(420 232)"><path class="f-cursor" d="M0 0 L0 22 L6 16.5 L10 26 L14 24.2 L10 15 L18 15 Z" stroke-width="1.6" stroke-linejoin="round"/></g>
+<rect class="f-frame" x="664" y="34" width="196" height="400" rx="34"/><rect class="f-phone" x="673" y="43" width="178" height="382" rx="26"/><rect class="f-frame" x="738.48" y="51.92" width="47.04" height="11.76" rx="5.88"/>
+<g class="h-trackpad"><rect class="f-pad" x="684" y="154" width="156" height="250" rx="18"/><rect class="f-line" x="728" y="130" width="68" height="8" rx="4"/></g>
+<g class="h-phonewin"><rect class="f-win" x="673" y="74" width="178" height="342" rx="12"/><rect class="f-titlebar" x="673" y="74" width="178" height="30" rx="12"/><rect class="f-titlebar" x="673" y="88" width="178" height="16"/><rect class="f-line2" x="687" y="122.0" width="82.5" height="10" rx="5.0"/><rect class="f-line" x="687" y="148.0" width="144.0" height="10" rx="5.0"/><rect class="f-line" x="687" y="174.0" width="135.0" height="10" rx="5.0"/><rect class="f-line" x="687" y="200.0" width="139.5" height="10" rx="5.0"/><rect class="f-line" x="687" y="226.0" width="108.0" height="10" rx="5.0"/><rect class="f-line" x="687" y="252.0" width="142.5" height="10" rx="5.0"/><rect class="f-line" x="687" y="278.0" width="127.5" height="10" rx="5.0"/><rect class="f-line" x="687" y="304.0" width="90.0" height="10" rx="5.0"/><rect class="f-line" x="687" y="330.0" width="135.0" height="10" rx="5.0"/><rect class="f-line" x="687" y="356.0" width="105.0" height="10" rx="5.0"/><rect class="f-line" x="687" y="382.0" width="120.0" height="10" rx="5.0"/></g>
+<rect class="h-ghost" x="150" y="92" width="330" height="214" rx="10" vector-effect="non-scaling-stroke"/>
+<g class="h-finger"><circle class="f-ripple" cx="0" cy="0" r="16"/><circle class="f-finger" cx="0" cy="0" r="15"/></g>
+</svg>
+<ol class="demo-steps">
+<li><b>1</b>Move your finger and the Mac’s cursor follows</li>
+<li><b>2</b>The window you open fits your iPhone screen</li>
+</ol>
 </div>
 </div>
 </section>
 
-<section class="section" id="features" aria-labelledby="features-title">
+<div class="values" id="features">
+<div class="wrap">
+
+<section class="value" aria-labelledby="v1-title">
+<div class="value-text">
+<span class="kicker">Fit Window</span>
+<h2 id="v1-title" class="display">Readable. No pinching.</h2>
+<p class="lead">Shrink a big Mac screen onto a phone and the text becomes unreadable. Pick one Mac app in Remones and its window is fitted to your iPhone or iPad screen.</p>
+<ul class="ticks">
+<li>Adjust the text size to taste.</li>
+<li>Switch to Desktop when you want the whole screen.</li>
+</ul>
+</div>
+<div class="stage" data-demo="window">
+<svg class="demo-svg" viewBox="0 0 380 320" role="img" aria-label="Text too small to read in Desktop becomes readable in Fit Window">
+<rect class="f-frame" x="100" y="10" width="180" height="300" rx="32"/><rect class="f-phone" x="109" y="19" width="162" height="282" rx="24"/><rect class="f-frame" x="168.4" y="27.6" width="43.199999999999996" height="10.799999999999999" rx="5.3999999999999995"/>
+<g class="w-desk"><rect class="f-desk" x="113" y="111.875" width="154" height="96.25" rx="3"/><rect class="f-win" x="143" y="125.875" width="84.7" height="57.75" rx="2"/><rect class="f-line2" x="148" y="133.9" width="34.6" height="1.6" rx="0.8"/><rect class="f-line" x="148" y="138.9" width="65.8" height="1.6" rx="0.8"/><rect class="f-line" x="148" y="143.9" width="62.4" height="1.6" rx="0.8"/><rect class="f-line" x="148" y="148.9" width="55.4" height="1.6" rx="0.8"/><rect class="f-line" x="148" y="153.9" width="63.8" height="1.6" rx="0.8"/><rect class="f-line" x="148" y="158.9" width="41.6" height="1.6" rx="0.8"/><rect class="f-line" x="148" y="163.9" width="58.9" height="1.6" rx="0.8"/></g>
+<g class="w-fit"><rect class="f-win" x="109" y="45" width="162" height="256" rx="14"/><rect class="f-line2" x="123" y="69.0" width="80.4" height="10" rx="5.0"/><rect class="f-line" x="123" y="93.0" width="128.6" height="10" rx="5.0"/><rect class="f-line" x="123" y="117.0" width="120.6" height="10" rx="5.0"/><rect class="f-line" x="123" y="141.0" width="126.0" height="10" rx="5.0"/><rect class="f-line" x="123" y="165.0" width="93.8" height="10" rx="5.0"/><rect class="f-line" x="123" y="189.0" width="123.3" height="10" rx="5.0"/><rect class="f-line" x="123" y="213.0" width="115.2" height="10" rx="5.0"/><rect class="f-line" x="123" y="237.0" width="73.7" height="10" rx="5.0"/><rect class="f-line" x="123" y="261.0" width="120.6" height="10" rx="5.0"/><rect class="f-line" x="123" y="285.0" width="100.5" height="10" rx="5.0"/></g>
+<g class="w-lens"><circle class="f-lens" cx="173" cy="151.875" r="22"/><path class="f-lens" d="M189 167.875 l14 14"/></g>
+</svg>
+<div class="stage-caption" aria-hidden="true"><span class="chip">Desktop</span><span class="chip">Fit Window</span></div>
+</div>
+</section>
+
+<section class="value" aria-labelledby="v2-title">
+<div class="value-text">
+<span class="kicker">Multiple Macs</span>
+<h2 id="v2-title" class="display">Every Mac, on one Home.</h2>
+<p class="lead">Your home Mac and your work Mac, side by side. Home shows which ones are online before you open them.</p>
+<ul class="ticks">
+<li>While waiting, only status is checked — no screen is sent until you tap Open.</li>
+<li>Apps from a Mac you’ve connected to stay on Home even when it’s offline.</li>
+<li>The Shelf takes you to other windows and Macs in a moment.</li>
+</ul>
+</div>
+<div class="stage" data-demo="macs">
+<svg class="demo-svg" viewBox="0 0 380 300" role="img" aria-label="Home’s computer list. MacBook Pro, Mac Studio and Mac mini come online one by one">
+<text class="f-text f-title" x="22" y="40">Computers</text>
+<g class="m-row m-row-0">
+<rect class="f-row" x="20" y="64" width="340" height="64" rx="16"/>
+<rect class="f-line" x="38" y="82" width="34" height="22" rx="4"/><rect class="f-line" x="50" y="106" width="10" height="5" rx="1.5"/>
+<text class="f-text f-strong" x="88" y="92">MacBook Pro</text>
+<circle class="m-dot" cx="93" cy="108" r="4.5"/>
+<text class="f-text f-sub m-off" x="104" y="113">Offline</text>
+<text class="f-text f-sub m-on" x="104" y="113">Online</text>
+<rect class="m-btn" x="270" y="79" width="74" height="34" rx="17"/>
+<text class="f-text m-btn-text" x="307" y="101" text-anchor="middle">Open</text>
+</g><g class="m-row m-row-1">
+<rect class="f-row" x="20" y="142" width="340" height="64" rx="16"/>
+<rect class="f-line" x="38" y="160" width="34" height="22" rx="4"/><rect class="f-line" x="50" y="184" width="10" height="5" rx="1.5"/>
+<text class="f-text f-strong" x="88" y="170">Mac Studio</text>
+<circle class="m-dot" cx="93" cy="186" r="4.5"/>
+<text class="f-text f-sub m-off" x="104" y="191">Offline</text>
+<text class="f-text f-sub m-on" x="104" y="191">Online</text>
+<rect class="m-btn" x="270" y="157" width="74" height="34" rx="17"/>
+<text class="f-text m-btn-text" x="307" y="179" text-anchor="middle">Open</text>
+</g><g class="m-row m-row-2">
+<rect class="f-row" x="20" y="220" width="340" height="64" rx="16"/>
+<rect class="f-line" x="38" y="238" width="34" height="22" rx="4"/><rect class="f-line" x="50" y="262" width="10" height="5" rx="1.5"/>
+<text class="f-text f-strong" x="88" y="248">Mac mini</text>
+<circle class="m-dot" cx="93" cy="264" r="4.5"/>
+<text class="f-text f-sub m-off" x="104" y="269">Offline</text>
+<text class="f-text f-sub m-on" x="104" y="269">Online</text>
+<rect class="m-btn" x="270" y="235" width="74" height="34" rx="17"/>
+<text class="f-text m-btn-text" x="307" y="257" text-anchor="middle">Open</text>
+</g>
+</svg>
+</div>
+</section>
+
+<section class="value" aria-labelledby="v3-title">
+<div class="value-text">
+<span class="kicker">Away from home</span>
+<h2 id="v3-title" class="display">Away from home. No port forwarding.</h2>
+<p class="lead">Same Wi-Fi at home, Tailscale when you’re out. Remones picks a route that works from the addresses your iPhone has learned.</p>
+<ul class="ticks">
+<li>No router port forwarding.</li>
+<li>No Remones server, no account. Your screen never passes through our servers.</li>
+</ul>
+<p><a href="../en/tailscale/">Using Remones with Tailscale</a></p>
+</div>
+<div class="stage" data-demo="remote">
+<svg class="demo-svg" viewBox="0 0 380 300" role="img" aria-label="iPhone and Mac connect directly: over the LAN at home, over Tailscale when away">
+<g class="r-phone"><rect class="f-frame" x="46" y="70" width="72" height="150" rx="16"/><rect class="f-phone" x="55" y="79" width="54" height="132" rx="8"/><rect class="f-frame" x="73.36" y="85.44" width="17.28" height="5.0" rx="2.5"/></g>
+<rect class="f-frame" x="262" y="96" width="100" height="70" rx="8"/><rect class="f-desk" x="268" y="102" width="88" height="58" rx="3"/>
+<path class="f-stand" d="M300 166 h24 l4 16 h-32 z"/><rect class="f-stand" x="290" y="180" width="44" height="5" rx="2.5"/>
+<path class="r-link" d="M118 154 H262"/>
+<circle class="r-pkt r-pkt-0" cx="118" cy="150" r="5"/><circle class="r-pkt r-pkt-1" cx="118" cy="150" r="5"/><circle class="r-pkt r-pkt-2" cx="118" cy="150" r="5"/><circle class="r-pkt-back r-pkt-back-0" cx="262" cy="158" r="4"/><circle class="r-pkt-back r-pkt-back-1" cx="262" cy="158" r="4"/>
+<g class="r-lan"><rect class="r-chip" x="140" y="104" width="100" height="30" rx="15"/><text class="f-text r-chip-text" x="190" y="124" text-anchor="middle">LAN</text></g>
+<g class="r-ts"><rect class="r-chip r-chip-hi" x="140" y="104" width="100" height="30" rx="15"/><text class="f-text r-chip-text r-chip-text-hi" x="190" y="124" text-anchor="middle">Tailscale</text></g>
+<text class="f-text f-sub r-loc-home" x="82" y="250" text-anchor="middle">Home</text>
+<text class="f-text f-sub r-loc-away" x="82" y="250" text-anchor="middle">Away</text>
+<text class="f-text f-sub" x="312" y="210" text-anchor="middle">Home</text>
+</svg>
+</div>
+</section>
+
+<section class="value" aria-labelledby="v4-title">
+<div class="value-text">
+<span class="kicker">Input and Audio</span>
+<h2 id="v4-title" class="display">Fingers or keyboard.</h2>
+<p class="lead">Move the pointer like a trackpad, or touch the screen directly. Choose the input mode that suits what you’re doing.</p>
+<ul class="ticks">
+<li>Type with the iPhone keyboard — Japanese input included.</li>
+<li>Paste text you copied on your iPhone into the Mac.</li>
+<li>Haptic feedback as you control the Mac.</li>
+<li>Hear your Mac on your iPhone (Audio), with Picture in Picture.</li>
+</ul>
+</div>
+<div class="stage" data-demo="input">
+<svg class="demo-svg" viewBox="0 0 380 300" role="img" aria-label="Switching input modes, and text typed on the iPhone keyboard appearing on the Mac">
+<rect class="f-win" x="20" y="14" width="340" height="104" rx="12"/>
+<rect class="f-titlebar" x="20" y="14" width="340" height="24" rx="12"/><rect class="f-titlebar" x="20" y="26" width="340" height="12"/>
+<circle class="f-dot-r" cx="34" cy="26" r="4"/><circle class="f-dot-y" cx="47" cy="26" r="4"/><circle class="f-dot-g" cx="60" cy="26" r="4"/>
+<svg x="20" y="40" width="340" height="70" overflow="hidden"><text class="f-text f-type" x="18" y="42">Hello from iPhone</text>
+<g class="i-cover"><rect class="f-win" x="16" y="6" width="320" height="56"/><rect class="i-caret" x="16" y="16" width="2.5" height="32"/></g></svg>
+<rect class="f-seg" x="22" y="148" width="336" height="34" rx="17"/>
+<rect class="i-seg-hi" x="25" y="151" width="106" height="28" rx="14"/>
+<text class="f-text f-small" x="78" y="170" text-anchor="middle">Trackpad</text><text class="f-text f-small" x="190" y="170" text-anchor="middle">Touch</text><text class="f-text f-small" x="302" y="170" text-anchor="middle">Direct</text>
+<rect class="f-key i-key i-key-0-0" x="24.0" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-0-1" x="57.2" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-0-2" x="90.4" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-0-3" x="123.6" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-0-4" x="156.8" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-0-5" x="190.0" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-0-6" x="223.2" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-0-7" x="256.4" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-0-8" x="289.6" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-0-9" x="322.8" y="204" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-1-0" x="40.0" y="234" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-1-1" x="73.2" y="234" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-1-2" x="106.4" y="234" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-1-3" x="139.6" y="234" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-1-4" x="172.8" y="234" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-1-5" x="206.0" y="234" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-1-6" x="239.2" y="234" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-1-7" x="272.4" y="234" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-1-8" x="305.6" y="234" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-2-0" x="72.0" y="264" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-2-1" x="105.2" y="264" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-2-2" x="138.4" y="264" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-2-3" x="171.6" y="264" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-2-4" x="204.8" y="264" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-2-5" x="238.0" y="264" width="29" height="24" rx="5"/><rect class="f-key i-key i-key-2-6" x="271.2" y="264" width="29" height="24" rx="5"/>
+</svg>
+</div>
+</section>
+
+</div>
+</div>
+
+<section class="section" id="how" aria-labelledby="how-title">
 <div class="wrap">
 <div class="section-head">
-<span class="eyebrow">Features</span>
-<h2 id="features-title">Your Mac work, in the palm of your hand</h2>
-<p class="lead">More than a mirrored screen. Open individual apps and windows so they stay usable on a small display.</p>
+<span class="eyebrow">Get started</span>
+<h2 id="how-title" class="display">Three steps to get going.</h2>
 </div>
-<div class="grid grid-3">
-<article class="card feature"><div class="glyph"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h3>Desktop — the whole Mac screen</h3><p>See and control your Mac’s entire desktop. Zoom in when you need to see the details.</p></article>
-<article class="card feature"><div class="glyph"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 9.5h18"/><path d="M6 7.2h.01M8.5 7.2h.01"/></svg></div><h3>Fit Window</h3><p>Pick one Mac app and Remones fits its window to your iPhone or iPad screen. You can adjust the text size too.</p></article>
-<article class="card feature"><div class="glyph"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="9" width="12" height="9" rx="1.5"/><path d="M6 21h4"/><path d="M8 6V5.5A1.5 1.5 0 0 1 9.5 4h11A1.5 1.5 0 0 1 22 5.5v7a1.5 1.5 0 0 1-1.5 1.5H17"/></svg></div><h3>All your Macs on one Home</h3><p>Keep your home Mac and your work Mac side by side and switch between them. Apps from a Mac you’ve connected to stay on Home even while it’s offline.</p></article>
-<article class="card feature"><div class="glyph"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M14.5 4v16"/><path d="M17 8h1.5M17 11h1.5M17 14h1.5"/></svg></div><h3>Switch fast with the Shelf</h3><p>The Shelf gathers open windows, apps and your other Macs, so you can jump from the current screen to another window in a moment.</p></article>
-<article class="card feature"><div class="glyph"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="6" width="20" height="12" rx="2.5"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7.5 14h9"/></svg></div><h3>Input — typing and paste</h3><p>Keyboard and trackpad input are supported. Text you copy on your iPhone can be pasted on the Mac from Input in the session menu.</p></article>
-<article class="card feature"><div class="glyph"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9.5h3l4.5-4v13L7 14.5H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18.5 6a8 8 0 0 1 0 12"/></svg></div><h3>Audio and Picture in Picture</h3><p>Play your Mac’s sound on your iPhone. With Picture in Picture, keep an eye on your Mac while using other apps.</p></article>
-<article class="card feature"><div class="glyph"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg></div><h3>Search windows and files</h3><p>Search windows, apps, workspaces and computers. If you allow it on the Mac, you can search file names on the Mac too.</p></article>
-<article class="card feature"><div class="glyph"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/></svg></div><h3>Away from home</h3><p>With a VPN such as Tailscale, connect the same way from outside your home network. <a class="more" href="../en/tailscale/">See how</a></p></article>
-<article class="card feature"><div class="glyph"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg></div><h3>Pairing you can verify</h3><p>The first time you connect, compare the code shown on your iPhone and your Mac, then approve on the Mac. Connections are encrypted.</p></article>
-</div>
+<ol class="flow" data-reveal>
+<li><h3>Install Remones on your iPhone</h3><p>Remones for iPhone and iPad is coming soon to the App Store.</p></li>
+<li><h3>Install the Mac app</h3><p>Install Remones Host on the Mac you want to control and allow Screen Recording and Accessibility.</p><a href="../en/mac/">About the Mac app</a></li>
+<li><h3>Pair, then open</h3><p>Choose your Mac on the iPhone, check the code and approve on the Mac. Then just tap Open.</p><a href="../en/setup/">Setup guide</a></li>
+</ol>
 </div>
 </section>
 
-<section class="section" id="screens" aria-labelledby="screens-title">
-<div class="wrap">
-<div class="section-head">
-<span class="eyebrow">Screens</span>
-<h2 id="screens-title">Calm, monochrome by default</h2>
-<p class="lead">Remones follows the light and dark appearance of your iPhone and iPad — and so does this page.</p>
-</div>
-<div class="screens">
-<figure class="device"><picture><source srcset="../assets/img/screen-home-light.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/screen-home-light.webp" alt="Home screen in light mode with the computer list and app list." width="600" height="856" loading="lazy" decoding="async"></picture><figcaption>Light</figcaption></figure>
-<figure class="device"><picture><source srcset="../assets/img/screen-home-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/screen-home-dark.webp" alt="Home screen in dark mode with the computer list and app list." width="600" height="856" loading="lazy" decoding="async"></picture><figcaption>Dark</figcaption></figure>
-</div>
-<p class="fineprint" style="margin-top:72px">Screenshots were taken from a development build in the Simulator with the Japanese interface. The released app may differ.</p>
-</div>
-</section>
-
-<section class="section" id="privacy" aria-labelledby="privacy-title">
+<section class="section privacy2" id="privacy" aria-labelledby="privacy-title">
 <div class="wrap">
 <div class="band">
 <span class="eyebrow">Privacy</span>
-<h2 id="privacy-title">Nothing in between but your own network</h2>
-<p class="lead" style="max-width:40rem">Remones has no developer-run relay servers and no accounts. Your iPhone and your Mac connect directly.</p>
+<h2 id="privacy-title" class="display">Nothing in between but your own network.</h2>
+<p class="lead" style="max-width:40rem">Remones has no relay servers — so there’s no way for us to see your screen.</p>
+<svg class="demo-svg" viewBox="0 0 640 280" role="img" aria-label="iPhone and Mac connect directly; no Remones server is involved">
+<g class="p-cloud"><path class="f-cloud" d="M262 78 a26 26 0 0 1 8-50 a36 36 0 0 1 68-6 a28 28 0 0 1 40 30 a24 24 0 0 1-8 46 z"/>
+<path class="f-strike" d="M254 18 L392 104"/></g>
+<text class="f-text f-sub" x="320" y="136" text-anchor="middle">Remones server</text>
+<text class="f-text f-sub" x="320" y="162" text-anchor="middle">not involved</text>
+<rect class="f-frame" x="60" y="118" width="76" height="140" rx="16"/><rect class="f-phone" x="69" y="127" width="58" height="122" rx="8"/><rect class="f-frame" x="88.88" y="133.52" width="18.24" height="5.0" rx="2.5"/>
+<rect class="f-frame" x="470" y="138" width="130" height="88" rx="9"/><rect class="f-desk" x="477" y="145" width="116" height="74" rx="3"/>
+<path class="f-stand" d="M522 226 h26 l5 18 h-36 z"/>
+<path class="p-link" d="M150 206 H456"/>
+<path class="f-arrow" d="M446 198 l12 8 l-12 8 M160 198 l-12 8 l12 8"/>
+<text class="f-text f-strong" x="303" y="246" text-anchor="middle">Direct · encrypted (TLS)</text>
+</svg>
 <div class="grid">
 <div class="point"><h3>Direct connection</h3><p>Traffic goes over your local network or a VPN you set up. Screen, audio and input never pass through Remones servers.</p></div>
 <div class="point"><h3>No account</h3><p>There is no Remones account to create, and no email address to give.</p></div>
@@ -115,7 +251,7 @@
 <div class="card" style="padding:32px">
 <div class="accent-strip" aria-hidden="true"><span style="background:var(--accent-lemon)"></span><span style="background:var(--accent-orange)"></span><span style="background:var(--accent-coral)"></span><span style="background:var(--accent-violet)"></span><span style="background:var(--accent-blue)"></span><span style="background:var(--accent-green)"></span></div>
 <span class="eyebrow">Remones Plus</span>
-<h2 id="plus-title">An icon in your colour</h2>
+<h2 id="plus-title" class="display">An icon in your colour.</h2>
 <p class="lead" style="max-width:40rem">Remones Plus is a subscription that lets you choose the app icon and the matching in-app accent colour. Standard and Lemon are free.</p>
 <ul class="icon-row"><li><picture><source srcset="../assets/img/icon-standard-128-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/icon-standard-128.webp" alt="Standard app icon" width="128" height="128" loading="lazy" decoding="async"></picture><span>Standard</span><br><span class="badge">Free</span></li><li><picture><source srcset="../assets/img/icon-lemon-128-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/icon-lemon-128.webp" alt="Lemon app icon" width="128" height="128" loading="lazy" decoding="async"></picture><span>Lemon</span><br><span class="badge">Free</span></li><li><picture><source srcset="../assets/img/icon-orange-128-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/icon-orange-128.webp" alt="Orange app icon" width="128" height="128" loading="lazy" decoding="async"></picture><span>Orange</span><br><span class="badge badge-plus">Plus</span></li><li><picture><source srcset="../assets/img/icon-coral-128-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/icon-coral-128.webp" alt="Coral app icon" width="128" height="128" loading="lazy" decoding="async"></picture><span>Coral</span><br><span class="badge badge-plus">Plus</span></li><li><picture><source srcset="../assets/img/icon-violet-128-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/icon-violet-128.webp" alt="Violet app icon" width="128" height="128" loading="lazy" decoding="async"></picture><span>Violet</span><br><span class="badge badge-plus">Plus</span></li><li><picture><source srcset="../assets/img/icon-blue-128-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/icon-blue-128.webp" alt="Blue app icon" width="128" height="128" loading="lazy" decoding="async"></picture><span>Blue</span><br><span class="badge badge-plus">Plus</span></li><li><picture><source srcset="../assets/img/icon-green-128-dark.webp" media="(prefers-color-scheme: dark)"><img src="../assets/img/icon-green-128.webp" alt="Green app icon" width="128" height="128" loading="lazy" decoding="async"></picture><span>Green</span><br><span class="badge badge-plus">Plus</span></li></ul>
 <p class="fineprint">Remones Plus is optional. Prices and free-trial terms are shown on the App Store and in the app’s purchase screen.</p>
@@ -123,26 +259,11 @@
 </div>
 </section>
 
-<section class="section" id="start" aria-labelledby="start-title">
+<section class="section final-dl" id="download" data-final-download aria-labelledby="download-title">
 <div class="wrap">
-<div class="section-head">
-<span class="eyebrow">Get started</span>
-<h2 id="start-title">Up and running in three steps</h2>
-</div>
-<ol class="compact-steps">
-<li class="card"><h3>Install the Mac app</h3><p>Install Remones Host on the Mac you want to control.</p><a href="../en/mac/">About the Mac app</a></li>
-<li class="card"><h3>Allow permissions on the Mac</h3><p>Allow Screen Recording to share the screen, and Accessibility to control the Mac.</p><a href="../en/mac/#permissions">About permissions</a></li>
-<li class="card"><h3>Add it on your iPhone and approve</h3><p>Choose your Mac in Remones, check the code, and approve on the Mac.</p><a href="../en/setup/">Setup guide</a></li>
-</ol>
-</div>
-</section>
-
-<section class="section" id="get" aria-labelledby="get-title">
-<div class="wrap">
-<div class="section-head">
-<span class="eyebrow">Download</span>
-<h2 id="get-title">All you need: an iPhone or iPad, and a Mac</h2>
-</div>
+<picture><source srcset="../assets/img/icon-256-dark.webp" media="(prefers-color-scheme: dark)"><img class="icon-big" src="../assets/img/icon-256.webp" alt="Remones app icon" width="256" height="256" decoding="async"></picture>
+<h2 id="download-title" class="display">Get started with Remones.</h2>
+<p class="lead" style="max-width:36rem;margin:0 auto">One app for your iPhone or iPad, one for your Mac. That’s all you need.</p>
 <ul class="platforms">
 <li class="card platform">
 <div class="meta"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6.5" y="2.5" width="11" height="19" rx="2.8"/><path d="M10.5 18.5h3"/></svg><div><h3>iPhone and iPad</h3><span class="badge badge-soon">Coming soon</span></div></div>
@@ -154,17 +275,18 @@
 <div class="meta"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4.5" width="16" height="11" rx="1.6"/><path d="M2 19h20"/></svg><div><h3>Mac (Remones Host)</h3><span class="badge badge-soon">In preparation</span></div></div>
 <p>The companion app for the Mac you control. It accepts connections from your iPhone or iPad and streams the screen and sound.</p>
 <dl><dt>Requires</dt><dd>macOS 15 or later</dd><dt>Available on</dt><dd>GitHub Releases</dd></dl>
-<div class="actions"><a class="btn btn-secondary" href="../en/mac/">Details and installation</a></div>
+<div class="actions"><a class="btn btn-primary" href="../en/mac/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4.5" width="16" height="11" rx="1.6"/><path d="M2 19h20"/></svg>Get the Mac app</a></div>
 </li>
 </ul>
 </div>
 </section>
 </main>
+<aside class="dl-bar" aria-label="Download"><span class="brand-mini"><svg viewBox="200 210 640 640" aria-hidden="true" focusable="false"><path class="mark-base" fill-rule="evenodd" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L806.46 221.31 A18.43 18.43 0 0 1 824.89 239.75 L824.89 553.09 A61.44 61.44 0 0 1 763.45 614.53 L705.75 614.53 A12.29 12.29 0 0 0 697.06 635.51 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z M314.94 349.11 A33.79 33.79 0 0 1 348.73 315.32 L686.65 315.32 A33.79 33.79 0 0 1 720.44 349.11 L720.44 486.74 A33.79 33.79 0 0 1 686.65 520.53 L348.73 520.53 A33.79 33.79 0 0 1 314.94 486.74 Z"/><path class="mark-cursor" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L807.19 221.31 A17.69 17.69 0 0 1 824.89 239.01 L824.89 255.12 A7.37 7.37 0 0 1 822.73 260.34 L720.44 362.63 L720.44 338.03 A22.71 22.71 0 0 0 697.73 315.32 L348.73 315.32 A33.79 33.79 0 0 0 314.94 349.11 L314.94 486.74 A33.79 33.79 0 0 0 348.73 520.53 L579.03 520.53 A7.37 7.37 0 0 1 584.24 522.69 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z"/></svg><span>Remones</span></span><span class="btn btn-soon" role="link" aria-disabled="true"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6.5" y="2.5" width="11" height="19" rx="2.8"/><path d="M10.5 18.5h3"/></svg>App Store · soon<span class="visually-hidden">（not yet available）</span></span><a class="btn btn-secondary" href="../en/mac/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4.5" width="16" height="11" rx="1.6"/><path d="M2 19h20"/></svg>Mac app</a></aside>
 <footer class="site-footer">
 <div class="wrap">
 <div class="footer-grid">
-<div class="footer-brand"><a class="brand" href="../en/"><svg viewBox="200 210 640 640" aria-hidden="true" focusable="false"><path class="mark-base" fill-rule="evenodd" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L806.46 221.31 A18.43 18.43 0 0 1 824.89 239.75 L824.89 553.09 A61.44 61.44 0 0 1 763.45 614.53 L705.75 614.53 A12.29 12.29 0 0 0 697.06 635.51 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z M314.94 349.11 A33.79 33.79 0 0 1 348.73 315.32 L686.65 315.32 A33.79 33.79 0 0 1 720.44 349.11 L720.44 486.74 A33.79 33.79 0 0 1 686.65 520.53 L348.73 520.53 A33.79 33.79 0 0 1 314.94 486.74 Z"/><path class="mark-cursor" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L807.19 221.31 A17.69 17.69 0 0 1 824.89 239.01 L824.89 255.12 A7.37 7.37 0 0 1 822.73 260.34 L720.44 362.63 L720.44 338.03 A22.71 22.71 0 0 0 697.73 315.32 L348.73 315.32 A33.79 33.79 0 0 0 314.94 349.11 L314.94 486.74 A33.79 33.79 0 0 0 348.73 520.53 L579.03 520.53 A7.37 7.37 0 0 1 584.24 522.69 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z"/></svg><span>Remones</span></a><p>Your Mac, from your iPhone and iPad.</p></div>
-<div><h2>Product</h2><ul><li><a href="../en/#features">Features</a></li><li><a href="../en/#screens">Screens</a></li><li><a href="../en/#plus">Remones Plus</a></li><li><a href="../en/download/">Download</a></li></ul></div><div><h2>Guides</h2><ul><li><a href="../en/setup/">Get started</a></li><li><a href="../en/mac/">Mac app</a></li><li><a href="../en/tailscale/">Use it away from home</a></li><li><a href="../en/support/">Support</a></li></ul></div><div><h2>Legal</h2><ul><li><a href="../en/privacy/">Privacy Policy</a></li><li><a href="../en/terms/">Terms of Use</a></li></ul></div>
+<div class="footer-brand"><a class="brand" href="../en/"><svg viewBox="200 210 640 640" aria-hidden="true" focusable="false"><path class="mark-base" fill-rule="evenodd" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L806.46 221.31 A18.43 18.43 0 0 1 824.89 239.75 L824.89 553.09 A61.44 61.44 0 0 1 763.45 614.53 L705.75 614.53 A12.29 12.29 0 0 0 697.06 635.51 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z M314.94 349.11 A33.79 33.79 0 0 1 348.73 315.32 L686.65 315.32 A33.79 33.79 0 0 1 720.44 349.11 L720.44 486.74 A33.79 33.79 0 0 1 686.65 520.53 L348.73 520.53 A33.79 33.79 0 0 1 314.94 486.74 Z"/><path class="mark-cursor" d="M210.49 233.60 A12.29 12.29 0 0 1 222.78 221.31 L807.19 221.31 A17.69 17.69 0 0 1 824.89 239.01 L824.89 255.12 A7.37 7.37 0 0 1 822.73 260.34 L720.44 362.63 L720.44 338.03 A22.71 22.71 0 0 0 697.73 315.32 L348.73 315.32 A33.79 33.79 0 0 0 314.94 349.11 L314.94 486.74 A33.79 33.79 0 0 0 348.73 520.53 L579.03 520.53 A7.37 7.37 0 0 1 584.24 522.69 L798.82 737.27 A36.86 36.86 0 0 1 798.82 789.40 L778.58 809.65 A36.86 36.86 0 0 1 726.44 809.65 L534.93 618.13 A12.29 12.29 0 0 0 526.24 614.53 L473.63 614.53 A12.29 12.29 0 0 0 464.94 618.13 L252.75 830.32 A18.43 18.43 0 0 1 239.72 835.71 L228.18 835.71 A17.69 17.69 0 0 1 210.49 818.02 Z"/></svg><span>Remones</span></a><p>Your iPhone becomes your Mac.</p></div>
+<div><h2>Product</h2><ul><li><a href="../en/#features">Features</a></li><li><a href="../en/#how">How it works</a></li><li><a href="../en/#plus">Remones Plus</a></li><li><a href="../en/download/">Download</a></li></ul></div><div><h2>Guides</h2><ul><li><a href="../en/setup/">Get started</a></li><li><a href="../en/mac/">Mac app</a></li><li><a href="../en/tailscale/">Use it away from home</a></li><li><a href="../en/support/">Support</a></li></ul></div><div><h2>Legal</h2><ul><li><a href="../en/privacy/">Privacy Policy</a></li><li><a href="../en/terms/">Terms of Use</a></li></ul></div>
 </div>
 <p class="copyright">© 2026 Remones. Apple, Mac, iPhone, iPad and macOS are trademarks of Apple Inc. Tailscale is a trademark of Tailscale Inc.</p>
 </div>
