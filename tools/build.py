@@ -280,6 +280,12 @@ def build_sitemap(slugs: list[str]) -> str:
 def main() -> None:
     ja_pages = content_ja.pages()
     en_pages = content_en.pages()
+    if not getattr(cfg, "LEGAL_PUBLISHED", True):
+        legal = {"privacy", "terms"}
+        ja_pages = [p for p in ja_pages if p["slug"] not in legal]
+        en_pages = [p for p in en_pages if p["slug"] not in legal]
+        for ui in UI.values():
+            ui["footer_cols"] = [c for c in ui["footer_cols"] if c[0] not in ("規約", "Legal")]
     ja_slugs = [p["slug"] for p in ja_pages]
     en_slugs = [p["slug"] for p in en_pages]
     if ja_slugs != en_slugs:

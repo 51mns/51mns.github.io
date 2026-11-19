@@ -134,7 +134,6 @@ def home() -> dict:
 <div class="point"><h3>Verify, then approve</h3><p>On first connection, check the six-digit code on both screens and approve on the Mac. Connections use TLS.</p></div>
 <div class="point"><h3>No ads, no analytics</h3><p>No advertising or third-party analytics SDKs are built in, and logs are never uploaded automatically.</p></div>
 </div>
-<p style="margin-top:28px"><a href="~/privacy/">Read the Privacy Policy (draft)</a></p>
 </div>
 </div>
 </section>
@@ -446,7 +445,7 @@ def support() -> dict:
         ("Do I need an account?",
          "<p>No. Just pair your iPhone with your Mac.</p>"),
         ("Is my screen or input sent anywhere?",
-         "<p>It goes directly between your iPhone and your Mac, never to a developer server. See the <a href=\"~/privacy/\">Privacy Policy (draft)</a>.</p>"),
+         "<p>It goes directly between your iPhone and your Mac, never to a developer server.</p>"),
         ("Is the connection encrypted?",
          "<p>Yes, connections use TLS. When you connect for the first time, compare the six-digit code on your iPhone and Mac to make sure it’s the right Mac before approving.</p>"),
         ("Can I use it away from home?",

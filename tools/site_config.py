@@ -31,3 +31,7 @@ MIN_MACOS = "15"
 
 # Default Host TCP port (Apps/Prototype/Host/HostViewModel.swift).
 DEFAULT_PORT = "7777"
+
+# Privacy Policy / Terms of Use are still drafts (provider, contact and dates
+# are placeholders). Keep them out of the published site until approved.
+LEGAL_PUBLISHED = False
